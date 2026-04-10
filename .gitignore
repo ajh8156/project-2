@@ -1,0 +1,31 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Project exclusions
+project-1/
+project-2/
+실습/
+강의자료/
+archive/
+
+# Data and large files
+**/data/
+*.csv
+*.xlsx
+*.pdf
+*.pptx
+*.docx
+
+# Agents & AI Config
+.agents/
+.gemini/
+.codex-local/
+.pytest_cache/
