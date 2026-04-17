@@ -1,7 +1,7 @@
 # MD팀 OKR 기획서
 
 > **작성일**: 2026-04-07  
-> **최종 수정**: 2026-04-11
+> **최종 수정**: 2026-04-17
 > **기준 문서**: `05_Company_OKR_Storyline_Draft.md`, `pm_diagnosis_report.md`, `review_tfidf_analysis.md`, `integrated_okr_plan.md`[^meta-1]
 > **담당 AARRR 구간**: Retention, Revenue
 > **연결 전사 KR**: KR1 (재구매율), KR2 (고객당 평균 주문 수), KR3 (재구매 주문 비중)[^meta-2]
@@ -31,6 +31,26 @@ MD팀이 이 구조에 기여하는 방식은 두 가지다.
 ![MD팀 현황 진단](../charts/md_okr_01_current_state.png)
 
 > **읽는 방법**: 왼쪽은 주문의 90%가 단품임을 보여준다. 가운데는 카테고리별 재구매율 — bed_bath_table이 최고(2.8%), watches_gifts가 최저(1.2%). 오른쪽은 DL 리뷰 분석 결과로, 679건(6.3%)의 "가격/배송비 불만"이 다품목 구매의 숨겨진 장벽임을 보여준다.
+
+```mermaid
+flowchart TD
+    OBJ["🎯 전사 Objective\n재구매 구조 개선"]
+
+    OBJ --> R["Retention 기여\n고객이 다시 살 이유를\n상품 구성으로 만든다"]
+    OBJ --> V["Revenue 기여\n한 번 살 때\n더 많이 사게 만든다"]
+
+    R --> ST1["단기: BF cohort 확보\nKR3 재구매 주문 비중"]
+    R --> ST2["중기: 생필품 카테고리 강화\nKR1 재구매율"]
+    R --> ST3["장기: 고가 LTV 설계\nKR1 재구매율"]
+
+    V --> SV1["단기: 번들·다품목 전환\nKR2 고객당 평균 주문 수"]
+    V --> SV2["중기: 번들 상시화\nKR2 고객당 평균 주문 수"]
+    V --> SV3["장기: Accessory Attach\nKR2 고객당 평균 주문 수"]
+
+    style OBJ fill:#1a1a2e,color:#fff
+    style R fill:#16213e,color:#fff
+    style V fill:#16213e,color:#fff
+```
 
 ---
 
@@ -104,6 +124,35 @@ MD팀 입장에서 Black Friday는 세 가지 이유에서 단기 OKR의 중심�
 | 2차 구매 쿠폰 발송 | ⚠️ CRM 통합 쿠폰 전략 확정 후 실행 — CRM이 단일 오너십 보유 (이슈 6) |
 | cohort 추적 시작 | BF 구매 고객 집단의 30일·60일 재구매율 별도 관리 |
 | 번들 성과 분석 | 어떤 번들 조합이 가장 높은 전환율을 보였는가 → 중기 OKR 번들 전략에 반영 |
+
+```mermaid
+flowchart LR
+    subgraph P1["1단계: BF 준비 (9~10월)"]
+        A1["번들 상품 10개\n기획·설계"]
+        A2["번들 할인율 확정\n12~18%"]
+        A3["Free Shipping\n정책 결정 ⚠️"]
+        A4["early-bird\n예약 구매 운영"]
+        A5["CRM 2차 쿠폰\n설계 협업"]
+    end
+
+    subgraph P2["2단계: BF 실행 (11월)"]
+        B1["번들 집중 노출\n메인 배너·카테고리 상단"]
+        B2["긴급감 연출\n카운트다운·재고 한정"]
+        B3["실시간 모니터링\n다품목·AOV 일별 추적"]
+    end
+
+    subgraph P3["3단계: BF 사후 (12월)"]
+        C1["2차 구매 쿠폰 발송\nCRM 오너십 ⚠️"]
+        C2["BF cohort 추적\n30일·60일 재구매율"]
+        C3["번들 성과 분석\n→ 중기 OKR 반영"]
+    end
+
+    P1 --> P2 --> P3
+
+    style P1 fill:#1a1a2e,color:#fff
+    style P2 fill:#16213e,color:#fff
+    style P3 fill:#0f3460,color:#fff
+```
 
 ---
 
@@ -289,6 +338,32 @@ watches_gifts(AOV ₩64,413)와 computers_accessories는 **AOV가 가장 높지�
 | **KR2** 고객당 평균 주문 수 1.03 → 1.06 | 단기 + 중기 | 번들·다품목 구매 구조 → 주문 빈도 상승 |
 | **KR3** 재구매 주문 비중 6.13% → 9.0% | 단기 + 중기 | BF cohort 확보 + 번들 상시화 |
 
+```mermaid
+flowchart TD
+    KR1["KR1\n재구매율\n3.0% → 4.5%"]
+    KR2["KR2\n고객당 평균 주문 수\n1.03 → 1.06"]
+    KR3["KR3\n재구매 주문 비중\n6.13% → 9.0%"]
+
+    ST["단기\nBF cohort 확보\n번들 전환"]
+    MT["중기\n생필품 카테고리 강화\n번들 상시화"]
+    LT["장기\n고가 LTV\nAttach 설계"]
+
+    ST -->|"BF cohort 재구매율"| KR3
+    ST -->|"다품목·AOV 상승"| KR2
+    MT -->|"bed_bath 재구매율 3.8%"| KR1
+    MT -->|"번들 상시화"| KR2
+    MT -->|"생필품 GMV 비중"| KR3
+    LT -->|"watches 재구매율 2.0%"| KR1
+    LT -->|"Attach GMV 3%"| KR2
+
+    style KR1 fill:#e94560,color:#fff
+    style KR2 fill:#0f3460,color:#fff
+    style KR3 fill:#16213e,color:#fff
+    style ST fill:#1a1a2e,color:#ccc
+    style MT fill:#1a1a2e,color:#ccc
+    style LT fill:#1a1a2e,color:#ccc
+```
+
 > **MD팀만으로 전사 KR 전체를 달성할 수 없다.** CRM(Post-purchase 메시지), 물류(배송 SLA), Product(추천 로직)의 협업이 전제다. MD의 역할은 "고객이 다시 살 이유(상품·구조)"를 만드는 것이고, 나머지 팀이 "고객이 다시 사게 만드는 접점"을 담당한다.
 
 ---
@@ -320,6 +395,26 @@ watches_gifts(AOV ₩64,413)와 computers_accessories는 **AOV가 가장 높지�
 | **장기** | Product/UX | Accessory Attach 추천 로직 (Post-purchase 추천 연동) |
 | **장기** | Data/BI | Attach 비중 측정 인프라 구축 (데이터 파이프라인 협업 전제) |
 
+```mermaid
+flowchart LR
+    MD["MD팀"]
+
+    MD -->|"번들 셀러 협의\n6주 리드타임"| SO["Seller Ops"]
+    MD -->|"번들 페이지·CTA·UX\nAttach 추천 로직"| PU["Product/UX"]
+    MD -->|"BF 2차 구매 캠페인\nCRM 단일 오너십"| CRM["CRM"]
+    MD -->|"생필품 카테고리\n배송 지연율 개선"| LOG["물류팀"]
+    MD -->|"Attach 측정 인프라\n데이터 파이프라인"| BI["Data/BI"]
+    MD -->|"Free Shipping 정책 확정 ⚠️"| MGMT["경영진"]
+
+    SO -.->|"셀러 승인 결과"| MD
+    PU -.->|"Phase 0 완료 여부"| MD
+    CRM -.->|"쿠폰 자동화 로직"| MD
+    MGMT -.->|"정책 결정"| MD
+
+    style MD fill:#e94560,color:#fff
+    style MGMT fill:#533483,color:#fff
+```
+
 ---
 
 ## 옵션 비교 시각화
@@ -347,6 +442,30 @@ watches_gifts(AOV ₩64,413)와 computers_accessories는 **AOV가 가장 높지�
 ![실행 로드맵](../charts/md_okr_04_roadmap.png)
 
 > 단기(9~11월)는 번들 기획 + BF 집중. BF 이후(12월~)는 생필품 구조 강화로 전환. 4월 이후부터 고가 LTV 전략을 점진적으로 추가한다. Black Friday(11월)가 전략 전환의 피벗 포인트다.
+
+```mermaid
+gantt
+    title MD팀 OKR 실행 로드맵
+    dateFormat YYYY-MM
+    axisFormat %Y-%m
+
+    section 단기 (BF 승부)
+    번들 상품 기획·셀러 협의     :active, 2018-09, 2018-10
+    early-bird 예약 구매 운영    :2018-10, 2018-11
+    Black Friday 실행           :milestone, bf, 2018-11, 1M
+    BF 성과 분석·cohort 추적     :2018-12, 2019-01
+
+    section 중기 (생필품 구조)
+    BF 검증 번들 상시화          :2018-12, 2019-03
+    생필품 신규 셀러 온보딩       :2018-12, 2019-03
+    bed_bath 카테고리 depth 강화 :2019-01, 2019-04
+    계절 기획 (연말·신년)        :2018-12, 2019-02
+
+    section 장기 (고가 LTV)
+    Attach 맵 설계·추천 로직 협업 :2019-04, 2019-10
+    Attach 측정 인프라 구축      :2019-04, 2019-07
+    watches/computers Attach 운영 :2019-07, 2020-03
+```
 
 ---
 
