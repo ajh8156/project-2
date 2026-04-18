@@ -35,7 +35,7 @@
 Olist의 가장 큰 과제이자 CRM의 최우선 타겟인 **[Acquisition(신규 유입) → Retention(재구매 유지)]** 전환 구간에 역량을 집중합니다. 
 
 <p align="center">
-  <img src="../charts/funnel_roadmap.png" alt="AARRR Funnel 전략" width="80%">
+  <img src="./images/funnel_roadmap.png" alt="AARRR Funnel 전략" width="80%">
 </p>
 
 ### 🌉 [Acquisition → Retention 브릿지 집중 전환 전략]
@@ -47,7 +47,7 @@ Olist의 가장 큰 과제이자 CRM의 최우선 타겟인 **[Acquisition(신�
 할인 혜택(돈)만 보고 들어온 'Acquisition(신규) 체리피커'를 1월로 유도하여 평생 VIP(Retention)로 고착화합니다.
 
 <p align="center">
-  <img src="../charts/bf_bounceback.png" alt="BF 3-Step 전략 여정" width="80%">
+  <img src="./images/bf_bounceback.png" alt="BF 3-Step 전략 여정" width="80%">
 </p>
 
 - **STEP 1 (11월 초 - Pre BF)**: "BF 할인가 선공개" 알림을 앱/이메일로 쏘고, 유저 장바구니에 담긴 내역을 수집합니다.
@@ -72,7 +72,7 @@ Olist의 가장 큰 과제이자 CRM의 최우선 타겟인 **[Acquisition(신�
 장바구니 연관 규칙 분석(가구 구매자 → 침구 재구매 확률 2.65배)을 활용한 점진적 푸시 타이밍 모델입니다.
 
 <p align="center">
-  <img src="../charts/nurturing_sequence.png" alt="라이프사이클 넛처링 시퀀스" width="80%">
+  <img src="./images/nurturing_sequence.png" alt="라이프사이클 넛처링 시퀀스" width="80%">
 </p>
 
 - **D+7일 (Value Add)**: 가구/인테리어 구매자에게 가구 배치 관리법, 인테리어 꿀팁 가이드를 발송하여 수신 피로도를 낮추고 브랜드 신뢰를 올립니다.
