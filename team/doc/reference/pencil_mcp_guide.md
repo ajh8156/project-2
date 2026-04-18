@@ -8,7 +8,14 @@
 
 ## 사전 준비 (팀원 각자 설치 필요)
 
-### 1. Claude Code CLI 설치
+> 설치 방식은 **CLI** 또는 **VS Code 익스텐션** 중 편한 걸 선택하세요.  
+> CLI가 어렵다면 VS Code 익스텐션 방식을 권장합니다.
+
+---
+
+### 방법 A — CLI 방식 (터미널 친숙한 분)
+
+#### A-1. Claude Code CLI 설치
 
 1. 브라우저에서 https://claude.ai/code 접속
 2. 본인 OS에 맞는 설치 파일 다운로드 (Windows / Mac)
@@ -21,14 +28,86 @@ claude --version
 
 정상 출력 예시: `claude 1.x.x`
 
+#### A-2. Pencil MCP 서버 등록 (최초 1회)
+
+```bash
+claude mcp add pencil npx pencil-mcp
+```
+
+등록 확인:
+
+```bash
+claude mcp list
+```
+
+출력 목록에 `pencil` 항목이 보이면 완료입니다.
+
+#### A-3. 실행
+
+터미널에서 `claude` 입력 → 채팅창 열림 → 작업 시작
+
 ---
 
-### 2. Pencil MCP 연동 확인
+### 방법 B — VS Code 익스텐션 방식 (터미널 불편한 분)
 
-1. Claude Code 실행 (`claude` 명령어 입력 또는 데스크탑 앱 실행)
-2. 채팅창 하단 또는 설정에서 **MCP 서버 목록** 확인
-3. `pencil` 항목이 **연결됨(Connected)** 상태인지 확인
-4. 연결 안 됨 표시 시 → 팀장(아무래도 아는 사람)에게 문의
+#### B-1. VS Code 설치 확인
+
+VS Code가 없다면 https://code.visualstudio.com 에서 설치
+
+#### B-2. Claude Code 익스텐션 설치
+
+1. VS Code 실행
+2. 왼쪽 사이드바 **Extensions** 아이콘 클릭 (또는 `Ctrl+Shift+X`)
+3. 검색창에 `Claude Code` 입력
+4. **Claude Code (Anthropic)** 익스텐션 → **Install** 클릭
+5. 설치 후 VS Code 재시작
+
+#### B-3. Anthropic 계정 로그인
+
+1. VS Code 재시작 후 왼쪽 사이드바에 Claude 아이콘 클릭
+2. **Sign in** 버튼 클릭 → 브라우저에서 Anthropic 계정으로 로그인
+3. 로그인 완료 후 VS Code로 돌아오면 채팅창 활성화
+
+#### B-4. Pencil MCP 서버 등록 (최초 1회)
+
+VS Code 내 터미널에서 실행 (`Ctrl+`` ` `` `로 터미널 열기):
+
+```bash
+claude mcp add pencil npx pencil-mcp
+```
+
+또는 VS Code 설정에서 직접 추가:
+1. `Ctrl+Shift+P` → `Open User Settings (JSON)` 검색
+2. 아래 내용 추가:
+
+```json
+{
+  "claude.mcpServers": {
+    "pencil": {
+      "command": "npx",
+      "args": ["pencil-mcp"]
+    }
+  }
+}
+```
+
+3. 저장 후 VS Code 재시작
+
+#### B-5. 연동 확인
+
+1. Claude Code 채팅창 하단 또는 설정에서 **MCP 서버 목록** 확인
+2. `pencil` 항목이 **연결됨(Connected)** 상태인지 확인
+
+---
+
+### 공통 — 연결 안 될 때
+
+```bash
+claude mcp remove pencil
+claude mcp add pencil npx pencil-mcp
+```
+
+위 명령어 실행 후 Claude Code(또는 VS Code) 재시작
 
 ---
 
@@ -121,7 +200,7 @@ team/seller_ops/pencil-new.pen 파일 열어줘
 | `.pen` 파일은 Claude Code에서만 열기 | 일반 편집기로 열면 암호화된 내용이라 읽히지 않음 |
 | 완성본은 PNG/PDF로 내보낸 후 Google Drive 업로드 | 팀원 공유는 내보낸 이미지 기준 |
 | 파일명 규칙: `slide_섹션명_v버전.pen` | 예: `slide_cover_v1.pen`, `slide_rfm_v2.pen` |
-| 작업 전 팀장에게 어느 섹션 담당인지 공유 | 슬라이드 중복 작업 방지 |
+| 작업 전 담당 섹션을 팀 채팅에 공유 | 슬라이드 중복 작업 방지 |
 
 ---
 
