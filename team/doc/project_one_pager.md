@@ -9,20 +9,20 @@
 ## 분석 접근 구조 — 어떻게 이 결론에 도달했는가
 
 ```
-EDA → KPI Tree → OKR → AARRR
-사실    구조화    목표    실행
+EDA → KPI Tree → AARRR → OKR
+사실    수식 병목   단계 병목   목표
 ```
 
 | 단계 | 핵심 질문 | 역할 | 이 프로젝트에서 |
 |------|----------|------|--------------|
 | **EDA** | 지금 무슨 일이 벌어지고 있는가? | 원시 데이터에서 수치 사실 발견 | 재구매율 3%, 배송 지연율 8.16%, AOV 159.79 확정 |
-| **KPI Tree** | 왜 그 숫자가 나왔는가? | 지표 간 인과관계 구조화 → 병목 특정 | GMV = 주문수 × AOV 분해, 재구매율 낮은 원인 3가지로 귀결 |
-| **OKR** | 어디로 가야 하는가? | 병목을 목표로 전환 → 팀별 cascade | 전사 Objective + KR5개 + Guardrail 2개 → 6개 팀 KR 배분 |
-| **AARRR** | 고객 여정 어느 단계에서 누가 무엇을 하는가? | 실행 역할 배분 + 단계별 우선순위 | Acquisition ✅ / Retention 🚨 → 팀 × 단계 기여 매트릭스 |
+| **KPI Tree** | 왜 그 숫자가 나왔는가? | 지표 간 수식 구조로 병목 특정 | GMV = Orders × AOV, Orders = Customers × Frequency → Frequency가 병목 |
+| **AARRR** | 고객 여정 어느 단계에서 깨지는가? | 퍼널 단계별 병목 특정 + 팀 역할 배분 기반 | Acquisition ✅ / Activation ⚠️ / Retention 🚨 / Revenue ⚠️ / Referral ⚪ |
+| **OKR** | 어디로 가야 하는가? | AARRR 병목을 목표로 전환 → 팀별 cascade | Retention KR 3개 + Activation KR 2개 + Acquisition/Revenue 가드레일 → 6개 팀 KR 배분 |
 
-**연결 논리:** EDA가 "재구매율 3%"를 발견 → KPI Tree가 "배송 지연 + CRM 부재 + 추천 없음"으로 원인 분해 → OKR이 "1년 내 4.5%, 선행 조건으로 배송 지연 6%"로 목표화 → AARRR이 Activation은 물류·Product, Retention은 CRM으로 실행 배분.
+**연결 논리:** EDA가 "재구매율 3%"를 발견 → KPI Tree가 "수식상 병목은 Frequency"로 좁힘 → AARRR이 "고객 여정에서 Retention이 병목, Activation이 선행 레버"로 단계 특정 → OKR이 그 결과를 "KR1 재구매율 4.5%, 선행 KR4·KR5로 배송 지연 6%·저평점 10.5%"로 목표화.
 
-> **왜 이 순서인가**: EDA 없이는 어떤 지표가 중요한지 모르고, KPI Tree 없이는 OKR 목표가 공허하며, OKR 없이는 AARRR 실행 방향이 없다.
+> **왜 이 순서인가**: EDA 없이는 어떤 지표가 중요한지 모르고, KPI Tree 없이는 수식상 병목이 안 보이며, AARRR 없이는 그 병목이 고객 여정 어느 단계에서 깨지는지 모르고, OKR 없이는 팀이 움직일 목표가 없다. 팀 KR이 대부분 Retention에 속하므로 AARRR을 OKR 앞에 두어야 "왜 이 KR들이 모였는가"가 자연스럽게 설명된다.
 
 ---
 
