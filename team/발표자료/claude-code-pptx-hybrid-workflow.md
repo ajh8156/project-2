@@ -4,11 +4,18 @@
 >
 > 최종 수정일: 2026-05-02
 
+## 🎨 디자인 시스템
+
+| 자료 | 링크 |
+|------|------|
+| 2팀-올리스트 발표 오브제 (Google Slides) | https://docs.google.com/presentation/d/1fyXpItrPbdbY1yPxc7EJ_oT1diiOraqEVJpYTTHfpAM/edit?slide=id.p#slide=id.p |
+
 ### 수정 내역
 
 | 날짜 | 내용 |
 |------|------|
 | 2026-05-02 | v1 작성 — §0 우리 프로젝트 적용 신설(디자인 시스템·파트·폴더·HTML 후보·레퍼런스·manifest) + 팀원 가독성 구조(TL;DR / 논의 결정 박스 / 일반 가이드 §1~§7 접기) + TF 폴더 표준 구조 명시(README · talking-points · `assets/`로 이미지 분리) |
+| 2026-05-02 | 디자인 시스템 링크(2팀-올리스트 발표 오브제 Google Slides) 상단 추가 |
 
 ---
 
