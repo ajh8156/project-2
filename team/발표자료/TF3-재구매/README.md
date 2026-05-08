@@ -14,6 +14,7 @@
 | 날짜 | 내용 |
 |------|------|
 | 2026-05-02 | 폴더 초기화 — README + talking-points + assets/ 베이스 골격 생성 (산출물 미입력) |
+| 2026-05-07 | `team/cx/new_이미지/`에서 3건 rename·이동 — 번들 카드 소스(`tf3-bundle-bedding-set.png`) + CRM 톤 레퍼런스 2건(`tf3-crm-ref-kakao-example.jpg`, `tf3-crm-ref-email-example.png`) |
 
 ---
 
@@ -27,19 +28,27 @@
 |---|---|---|
 | **`assets/tf3-journey-map.png` ★** | 첫구매 → D+0 → D+3 → D+7 → D+30 → D+60 → D+90 7터치포인트 | ⚠️ 발표 시각 정점, 가장 중요 |
 
-### 산출물 ① CRM 목업 — 카카오 플친·앱푸시 (📝 미작업)
+### 산출물 ① CRM 목업 — 카카오 플친·앱푸시·이메일 (✅ 9장 + 톤 ref 2건)
 
-| 파일 (`assets/` 하위) | 시점 | 채널 | 상태 |
+| 파일 (`assets/` 하위) | 시점 | 채널 | 비고 |
 |---|---|---|---|
-| `assets/tf3-crm-push-d7.png` | D+7 | iOS 앱푸시 | ⚠️ 미작업 |
-| `assets/tf3-crm-kakao-d30.png` | D+30 | 카카오 플친 | ⚠️ 미작업 |
+| `tf3_D07_push_A.png` / `tf3_D07_push_B.png` | D+7 | iOS 앱푸시 (A/B) | 발표 best-of 후보 ★ — A/B 선택 필요 |
+| `tf3_D07_kakao.png` / `tf3_D07_email.png` | D+7 | 카카오·이메일 | 백업 |
+| `tf3_D30_push_A.png` / `tf3_D30_push_B.png` | D+30 | iOS 앱푸시 (A/B) | 백업 |
+| `tf3_D30_kakao.png` ★ | D+30 | 카카오 플친 | 발표 best-of |
+| `tf3_D30_email.png` | D+30 | 이메일 | 백업 |
+| `tf3_D32_kakao.png` ★ | D+32 | 카카오 (이탈 직전) | 발표 best-of |
+| `tf3-crm-ref-kakao-example.jpg` | — | 톤 레퍼런스 | ✅ 디자인 톤 참고 |
+| `tf3-crm-ref-email-example.png` | — | 톤 레퍼런스 | ✅ 디자인 톤 참고 |
 
-### 산출물 ② 번들 카드 — 2차 구매 쿠폰 + 크로스셀링 (📝 미작업)
+> 발표 best-of 3장 선별안은 [슬라이드_산출물_매칭표_v1.md §2](../슬라이드_산출물_매칭표_v1.md#2) 참고. D+7 push A/B 중 1장 선택 필요.
+
+### 산출물 ② 번들 카드 — 2차 구매 쿠폰 + 크로스셀링 (🟡 침구세트 1장 / 쿠폰 카드 미작업)
 
 | 파일 (`assets/` 하위) | 내용 | 상태 |
 |---|---|---|
-| `assets/tf3-bundle-card-bedding.png` | 침대 구매 → 침구류 추천 (코호트 기반 크로스셀) | ⚠️ 미작업 |
-| `assets/tf3-bundle-coupon-2nd.png` | 2차 구매 쿠폰 카드 | ⚠️ 미작업 |
+| `tf3-bundle-bedding-set.png` | 침구세트 (침대 구매 → 침구류 코호트 크로스셀) | ✅ 소스 |
+| `tf3-bundle-coupon-2nd.png` | 2차 구매 쿠폰 카드 | ⚠️ 미작업 |
 
 ### 산출물 ③ 셀러 다각화 전략 (📝 미작업)
 
@@ -72,11 +81,11 @@
 
 | # | 산출물 | 상태 | 본 폴더 위치 |
 |---|---|---|---|
-| 0 | **Lifecycle Journey Map** (상단 시각 정점) ★ | 📝 미작업 | (작업 필요 — 우선) |
-| ① | **CRM 목업** (카카오 플친·앱푸시) | 📝 미작업 | (CRM 팀 작업 필요) |
-| ② | **번들 카드** (2차 구매 쿠폰 + 크로스셀링) | 📝 미작업 | (MD 협업 필요) |
-| ③ | **셀러 다각화 전략** | 📝 미작업 | (MD 협업 필요) |
-| ④ | **BF 구매자 코호트 추적** | 📝 미작업 | (CRM + 분석 협업) |
+| 0 | **Lifecycle Journey Map** (상단 시각 정점) ★ | 📝 미작업 | (P0 — 5/2 우선) |
+| ① | **CRM 목업** (카카오 플친·앱푸시·이메일) | ✅ 9장 + 톤 ref 2건 / D+7 A/B 선택 필요 | `assets/tf3_D*` + `tf3-crm-ref-*` |
+| ② | **번들 카드** (2차 구매 쿠폰 + 크로스셀링) | 🟡 침구세트 1장 / 쿠폰 카드 미작업 | `assets/tf3-bundle-bedding-set.png` |
+| ③ | **셀러 다각화 전략** | ✅ 1장 | `assets/tf3-seller-diversification.png` |
+| ④ | **BF 구매자 코호트 추적** | ✅ 1장 | `assets/tf3-bf-cohort-tracking.png` |
 
 > ⚠️ **5/2까지 시안 우선 작업** — TF3는 발표 정점이라 제작 우선순위 1순위 (slide_v2 §8 참고)
 
@@ -88,14 +97,14 @@
 tf3-{유형}-{설명}.{ext}
 ```
 
-| prefix | 용도 |
-|---|---|
-| `tf3-journey-*` | Lifecycle Journey Map |
-| `tf3-crm-*` | 산출물 ① CRM 목업 |
-| `tf3-bundle-*` | 산출물 ② 번들 카드 |
-| `tf3-seller-*` | 산출물 ③ 셀러 다각화 |
-| `tf3-bf-*` | 산출물 ④ BF 코호트 추적 |
-| `tf3-data-*` | 발표 데이터 근거 (분석 자료) |
+| prefix | 용도 | 현황 |
+|---|---|---|
+| `tf3-journey-*` | Lifecycle Journey Map | ⚠️ 미작업 (P0) |
+| `tf3-crm-*` / `tf3_D*` | 산출물 ① CRM 목업 | 9장 ✅ + ref 2건 (네이밍 통일은 발표 best-of 선별 후) |
+| `tf3-bundle-*` | 산출물 ② 번들 카드 | 1장 ✅ + 쿠폰 미작업 |
+| `tf3-seller-*` | 산출물 ③ 셀러 다각화 | 1장 ✅ |
+| `tf3-bf-*` | 산출물 ④ BF 코호트 추적 | 1장 ✅ |
+| `tf3-data-*` | 발표 데이터 근거 (분석 자료) | 미작업 (P2) |
 
 **원칙**:
 - 모든 경로는 프로젝트 루트 기준 **상대경로**만 사용 (절대 경로 금지)

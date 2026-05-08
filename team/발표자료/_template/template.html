@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Olist 발표 슬라이드 템플릿 (입타)</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- =================================================
+       ▼ 슬라이드 1장 = 1개의 .slide 블록
+       복사해서 콘텐츠만 갈아끼우면 됩니다.
+       활성 섹션(.active)은 슬라이드 Act에 맞춰 변경.
+       ================================================= -->
+
+  <div class="slide">
+
+    <!-- 헤더: olist 로고 + 4섹션 네비 -->
+    <header class="slide-header">
+      <div class="logo">olist</div>
+      <nav>
+        <span class="active">DIAGNOSE</span>
+        <span>BOTTLENECK</span>
+        <span>SOLUTION</span>
+        <span>OUTCOME</span>
+      </nav>
+    </header>
+
+    <!-- 콘텐츠 영역 -->
+    <main class="slide-content">
+
+      <!-- 슬라이드 헤딩 (검정 + 파랑 mix 가능) -->
+      <h1>SEVERAL <span class="accent">CORE</span> FINDINGS</h1>
+      <p style="color: var(--color-text-muted); font-size: 18px; max-width: 720px;">
+        네 가지 진단으로 본 Olist 재구매율의 진짜 병목.
+      </p>
+
+      <!-- 콘텐츠 자유 구성 영역 -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 80px;">
+        <div>
+          <div style="width: 32px; height: 3px; background: var(--olist-blue); margin-bottom: 24px;"></div>
+          <div class="label" style="color: var(--olist-blue); font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px;">01.</div>
+          <h3>Opening</h3>
+          <p style="color: var(--color-text-muted); font-size: 16px;">예시 카드. 콘텐츠를 자유롭게 배치하세요.</p>
+        </div>
+        <div>
+          <div style="width: 32px; height: 3px; background: var(--olist-blue); margin-bottom: 24px;"></div>
+          <div style="color: var(--olist-blue); font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px;">02.</div>
+          <h3>Theory</h3>
+          <p style="color: var(--color-text-muted); font-size: 16px;">Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div>
+          <div style="width: 32px; height: 3px; background: var(--olist-blue); margin-bottom: 24px;"></div>
+          <div style="color: var(--olist-blue); font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px;">03.</div>
+          <h3>Core Data</h3>
+          <p style="color: var(--color-text-muted); font-size: 16px;">예시 카드 — 자유롭게 변경.</p>
+        </div>
+        <div>
+          <div style="width: 32px; height: 3px; background: var(--olist-blue); margin-bottom: 24px;"></div>
+          <div style="color: var(--olist-blue); font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px;">04.</div>
+          <h3>Closing</h3>
+          <p style="color: var(--color-text-muted); font-size: 16px;">예시 카드 — 자유롭게 변경.</p>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- 푸터: 좌(브랜드) + 우(연도·페이지) -->
+    <footer class="slide-footer">
+      <span>NEVER—ENDING · OLIST 재구매 전략</span>
+      <span>2026 · 03</span>
+    </footer>
+
+  </div>
+
+  <!-- =================================================
+       ▼ 풀블리드 디바이더 슬라이드 예시 (페이지 2 마스터)
+       ================================================= -->
+
+  <div class="slide full-blue">
+    <header class="slide-header">
+      <div class="logo">olist</div>
+      <nav>
+        <span>DIAGNOSE</span>
+        <span class="active">BOTTLENECK</span>
+        <span>SOLUTION</span>
+        <span>OUTCOME</span>
+      </nav>
+    </header>
+    <main class="slide-content" style="justify-content: center;">
+      <div class="label" style="color: rgba(255,255,255,0.7); margin-bottom: 24px;">SECTION 02</div>
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 64px;">
+        <h1 class="display" style="font-size: 160px; line-height: 0.95;">BLIEVED<br>COMMON</h1>
+        <h1 class="display" style="font-size: 280px; line-height: 0.85;">02<span style="color: rgba(255,255,255,0.85);">.</span></h1>
+      </div>
+      <p style="color: rgba(255,255,255,0.85); font-size: 20px; margin-top: 48px; max-width: 600px;">
+        신뢰는 후행이 아니다 — 첫 클릭 전에 결정된다.
+      </p>
+    </main>
+    <footer class="slide-footer">
+      <span>NEVER—ENDING · OLIST 재구매 전략</span>
+      <span>2026 · 02</span>
+    </footer>
+  </div>
+
+</body>
+</html>

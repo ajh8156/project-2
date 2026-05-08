@@ -12,12 +12,38 @@
 | 날짜 | 내용 |
 |------|------|
 | 2026-05-02 | 폴더 정리 v1 — Thank-you 시안 7장 + CX 분석 자료 3장 + 설득 포인트 문서 추가, 워크플로우 §0-2 네이밍 적용, 이미지는 `assets/` 하위로 분리 |
+| 2026-05-07 | `team/cx/new_이미지/`에서 14건 rename·이동 — PDP 부품 11장(`tf2-pdp-*`) + CX 48h SLA 완성본 1장(`tf2-cx-sla-90percent.png` ★ P1 완성) + 블프 ref 2건(`tf2-bf-ref-*`) |
 
 ---
 
 ## 📁 폴더 안 파일 한눈에
 
 > 모든 이미지 산출물은 `assets/` 하위에 보관. 폴더 루트는 텍스트 문서(README · talking-points)만.
+
+### 산출물 ① PDP Before/After — 부품 11장 확보 (🟡 본 시안 export 필요)
+
+| 파일 (`assets/` 하위) | 용도 | 상태 |
+|---|---|---|
+| `tf2-pdp-before-fullpage.png` | PDP Before 풀페이지 (G마켓 형식) | ✅ 소스 |
+| `tf2-pdp-hero-soft-curve.png` | PDP After 메인 비주얼 (호텔식 무드) | ✅ 소스 |
+| `tf2-pdp-thumb-1.png` ~ `tf2-pdp-thumb-5.png` | After 갤러리 썸네일 5장 | ✅ 소스 |
+| `tf2-pdp-seller-mattress-topper.png` | 셀러 브랜드 (메트리스토퍼) | ✅ 소스 |
+| `tf2-pdp-seller-home-sleep-studio.png` | 셀러 브랜드 (홈슬립스튜디오) | ✅ 소스 |
+| `tf2-pdp-product-microfiber.png` | Micro Fiber 베개 변형 컷 | ✅ 소스 |
+| `tf2-pdp-ref-gmarket-search.png` | G마켓 검색 결과 시장 톤 ref | ✅ 소스 |
+
+### 산출물 ② CX 48h SLA — 완성본 1장 (✅)
+
+| 파일 (`assets/` 하위) | 내용 | 상태 |
+|---|---|---|
+| `tf2-cx-sla-90percent.png` | "6h 배정 원칙 → CS 대응률 90%" 슬라이드 (산출물 2 헤더 + 응답 시간 분포 + 대응 프로세스 카드) | ✅ 완성 |
+
+### 산출물 ④ 블프 프로모션 랜딩 — 레퍼런스 2건 (🟡 본 시안 미작업)
+
+| 파일 (`assets/` 하위) | 내용 | 상태 |
+|---|---|---|
+| `tf2-bf-ref-gmarket-blackprime.png` | G마켓 50% Black Prime Sale 배너 톤 ref | ✅ ref |
+| `tf2-bf-ref-gmarket-membership.pdf` | G마켓 멤버쉽 랜딩 구조 ref | ✅ ref |
 
 ### 산출물 ③ Thank-you 페이지 — 5시안 + 콜아웃 2장 (Pencil 완성 ✅)
 
@@ -51,12 +77,12 @@
 
 | # | 산출물 | 상태 | 본 폴더 위치 |
 |---|---|---|---|
-| ① | **PDP Before/After** (호텔식 베개·G마켓 톤) | 📝 컨셉 완료 / 시안 PNG 미export ⚠️ | (제작 진행 중) |
-| ② | **CX 48h SLA + 프로세스 카드** | 📝 컨셉만 | (Figma/Pencil 작업 필요) |
+| ① | **PDP Before/After** (호텔식 베개·G마켓 톤) | 🟡 부품 11장 확보 / 본 시안 5장 export 필요 | `assets/tf2-pdp-*.png` (11장) |
+| ② | **CX 48h SLA + 프로세스 카드** | ✅ **완성본 1장 확보** (5/7 발견) | `assets/tf2-cx-sla-90percent.png` |
 | ③ | **Thank-you 페이지 + 4채널 목업** | ✅ Pencil 시안 5+2장 완성 | `assets/tf2-thankyou-*.png` |
-| ④ | **블프 프로모션 랜딩 5단** | 📝 컨셉만 | (Figma/Pencil 작업 필요) |
+| ④ | **블프 프로모션 랜딩 5단** | 🟡 레퍼런스 2건 확보 / 본 시안 미작업 | `assets/tf2-bf-ref-*` |
 
-> ⚠️ **PDP 시안 export 필요**: 산출물 ① 컨셉·카피는 SSOT 문서에 정의 완료(`TF2_산출물_구상안_v1.md` §1)되었으나, 폴더에는 시안 부품(thumb / seller_avatar / pillow_after_main)만 있고 본 시안 5장(pdp_before_main, pdp_after_main 등)이 아직 export되지 않음. **5/5까지 export 완료 필요**.
+> ⚠️ **PDP 본 시안 5장 export 필요**: 부품(before-fullpage, hero-soft-curve, thumb 1~5, seller 2종, product, ref)은 모두 확보. 이를 조합해 PDP After 본 시안 5장(메인·갤러리·셀러 신뢰·리뷰·Fast-Ship 배지) export. **5/5까지 export 완료 필요**.
 
 ---
 
@@ -66,13 +92,13 @@
 tf2-{유형}-{설명}.{ext}
 ```
 
-| prefix | 용도 |
-|---|---|
-| `tf2-pdp-*` | 산출물 ① PDP 시안 |
-| `tf2-cx-*` | 산출물 ② CX 48h SLA |
-| `tf2-thankyou-*` | 산출물 ③ Thank-you (현재 7장) |
-| `tf2-bf-*` | 산출물 ④ 블프 랜딩 |
-| `tf2-data-*` | 발표 데이터 근거 (분석 자료) |
+| prefix | 용도 | 현황 |
+|---|---|---|
+| `tf2-pdp-*` | 산출물 ① PDP 시안 | 부품 11장 (본 시안 export 대기) |
+| `tf2-cx-*` | 산출물 ② CX 48h SLA | 완성본 1장 ✅ |
+| `tf2-thankyou-*` | 산출물 ③ Thank-you | 7장 ✅ Pencil |
+| `tf2-bf-*` | 산출물 ④ 블프 랜딩 | ref 2건 / 본 시안 대기 |
+| `tf2-data-*` | 발표 데이터 근거 (분석 자료) | 3장 ✅ |
 
 **원칙**:
 - 모든 경로는 프로젝트 루트 기준 **상대경로**만 사용 (절대 경로 금지)

@@ -1,0 +1,470 @@
+/* =========================================================
+   Olist Presentation Design System Tokens
+   기준: team/디자인시스템/olist-design-system.md v1.2 (2026.05)
+   작성일: 2026-05-08
+
+   ⚠️ 절대 변경 금지: 이 토큰은 사용자가 v1.2에서 확정한 정답값.
+   변경 시 PPT 마스터와 톤 어긋남 → "끼워넣은 티" 발생.
+
+   참고:
+   - 디자인 작업: 1920×1080 px (이 CSS 기준)
+   - PPTX 적용: 13.333"×7.5" (1 inch = 144 px)
+   - PPT 적용 시 pt 환산: 240px ≈ 100pt (Mega), 60px ≈ 36pt (Page Title)
+   ========================================================= */
+
+:root {
+  /* ── 1.1 Primary ───────────────────────────────── */
+  --olist-blue: #1E40FF;          /* 브랜드 컬러, 강조 텍스트, 액티브 네비, CTA */
+  --olist-blue-hover: #1730CC;    /* 인터랙션 hover (참고용) */
+  --blue-tint: #EEF2FF;           /* 강조 카드 배경 (10% tint) */
+
+  /* ── 1.2 Neutral ───────────────────────────────── */
+  --near-black: #080808;          /* 본문 텍스트, 메인 타이포 */
+  --gray-800: #222222;            /* 서브 타이틀 */
+  --gray-600: #5A5A5A;            /* 본문 보조, 캡션 */
+  --gray-400: #9CA3AF;            /* 메타 라벨, 페이지 번호, 푸터 */
+  --gray-200: #E5E7EB;            /* 디바이더 라인, 카드 테두리 */
+  --white: #FFFFFF;               /* 기본 배경, 다크 섹션 텍스트 */
+
+  /* ── 1.3 Semantic 강조 색상 (v1.3 갱신) ─────────── */
+  /* 블루 단색 시스템의 시각 강도 차이용. 한 슬라이드 최대 3곳 */
+  --critical: #EE1D36;            /* 위기·부정 (Retention 붕괴, 이탈, 지연) */
+  --warning:  #FFAE13;            /* 주의·중간 (Activation 흔들림) */
+  --success:  #00D722;            /* 긍정·달성 (KR 목표 달성) */
+
+  /* ── 2.1 Typography Family — Pretendard 단일 ───── */
+  /* ⚠️ 타 폰트 사용 절대 금지 (Arial, Helvetica, system 모두 X) */
+  --font-family: 'Pretendard', 'Pretendard Variable', sans-serif;
+
+  /* ── 2.2 Type Scale (1920×1080 기준 px) ─────────── */
+  /* PPTX 환산 pt는 옆 주석 참고 */
+  --fs-mega: 240px;               /* Mega Display (PPT ≈100pt) — 표지 OLIST */
+  --fs-section-title: 96px;       /* Section Title (PPT ≈54pt) — UPPER */
+  --fs-page-title: 60px;          /* Page Title (PPT ≈36pt) — UPPER */
+  --fs-chapter-num: 200px;        /* Chapter Number (PPT ≈120pt) — 02. */
+  --fs-h1: 24px;                  /* 카드 타이틀 (PPT ≈14pt) — Bold */
+  --fs-h2: 18px;                  /* 인덱스 라벨 (PPT ≈11pt) — Bold */
+  --fs-lead: 18px;                /* Lead Body (PPT ≈11pt) — Medium */
+  --fs-body: 14px;                /* Body (PPT ≈9pt) — Regular */
+  --fs-caption: 12px;             /* Caption (PPT ≈7pt) — Regular */
+  --fs-meta: 11px;                /* Meta Label UPPER (PPT ≈7pt) — Medium 자간 0.15em */
+  --fs-footer: 10px;              /* Footer/Page Num UPPER (PPT ≈6pt) — Regular 자간 0.1em */
+
+  /* ── Weight ──────────────────────────────────── */
+  --fw-black: 900;                /* Mega/Section/Page/Chapter Number */
+  --fw-extrabold: 800;            /* (사용 시 명시) */
+  --fw-bold: 700;                 /* H1/H2 카드 타이틀 + Active Nav */
+  --fw-semibold: 600;             /* 카드 타이틀, Active Nav */
+  --fw-medium: 500;               /* Lead Body, Meta Label, 비활성 Nav */
+  --fw-regular: 400;              /* Body, Caption, Footer */
+  --fw-light: 300;                /* 큰 본문 (옵션) */
+
+  /* ── Line Height ─────────────────────────────── */
+  --lh-tight: 1.0;                /* Mega Display, Chapter Number */
+  --lh-heading: 1.05;             /* Section/Page Title */
+  --lh-body: 1.5;                 /* Lead Body */
+  --lh-default: 1.6;              /* Body */
+  --lh-caption: 1.4;              /* Caption */
+
+  /* ── Letter Spacing ──────────────────────────── */
+  --ls-mega: -0.04em;             /* Mega Display */
+  --ls-heading: -0.02em;          /* Section/Page Title, Chapter Number */
+  --ls-meta: 0.15em;              /* Meta Label UPPER */
+  --ls-footer: 0.1em;             /* Footer UPPER */
+
+  /* ── 3. Layout Grid (1920×1080) ──────────────── */
+  --canvas-w: 1920px;
+  --canvas-h: 1080px;
+  --pad-x: 80px;                  /* 좌우 여백 (PPT 0.56") */
+  --pad-y-top: 50px;              /* 상단 여백 (PPT 0.35") */
+  --pad-y-bot: 50px;              /* 하단 여백 (PPT 0.35") */
+  --header-h: 60px;               /* Header 영역 (50~110px) */
+  --body-top: 150px;              /* Body 시작 y */
+  --body-bot: 970px;              /* Body 끝 y (높이 820px) */
+  --footer-y: 1030px;             /* Footer y (PPT 7.15") */
+
+  --grid-cols: 12;                /* 12 컬럼 (디자인 가이드) */
+  --grid-gutter: 24px;
+
+  /* ── 7. Spacing Tokens ───────────────────────── */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 80px;
+
+  /* ── Border Radius ───────────────────────────── */
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-md: 8px;               /* 8px 이상 사용 자제 */
+  --radius-round: 50%;
+
+  /* ── Border ──────────────────────────────────── */
+  --border-thin: 1px solid var(--gray-200);
+  --border-thick: 2px solid var(--gray-200);
+}
+
+/* =========================================================
+   Base — 모든 슬라이드 공통
+   ========================================================= */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--white);
+  color: var(--near-black);
+  font-family: var(--font-family);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-default);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* italic 사용 금지 */
+em, i { font-style: normal; }
+
+/* =========================================================
+   .slide — 1920×1080 캔버스
+   ========================================================= */
+
+.slide {
+  position: relative;
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  background: var(--white);
+  overflow: hidden;
+}
+
+/* 다크 섹션 (블루 풀블리드) */
+.slide.dark {
+  background: var(--olist-blue);
+  color: var(--white);
+}
+
+/* =========================================================
+   §4 Fixed Header — 모든 페이지 공통
+   ========================================================= */
+
+.slide-header {
+  position: absolute;
+  top: var(--pad-y-top);
+  left: var(--pad-x);
+  right: var(--pad-x);
+  height: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slide-header .logo {
+  font-family: var(--font-family);
+  font-weight: var(--fw-black);
+  font-size: 28px;
+  color: var(--olist-blue);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.slide.dark .slide-header .logo { color: var(--white); }
+
+.slide-header nav {
+  display: flex;
+  gap: 60px;                      /* §4.1 메뉴 간격 */
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-footer);  /* 0.1em */
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
+.slide-header nav .active {
+  color: var(--olist-blue);
+  font-weight: var(--fw-bold);
+}
+.slide.dark .slide-header nav { color: rgba(255,255,255,0.6); }
+.slide.dark .slide-header nav .active { color: var(--white); }
+
+/* =========================================================
+   §4 Fixed Footer — 모든 페이지 공통
+   ========================================================= */
+
+.slide-footer {
+  position: absolute;
+  left: var(--pad-x);
+  right: var(--pad-x);
+  top: var(--footer-y);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-family);
+  font-size: var(--fs-footer);
+  font-weight: var(--fw-regular);
+  letter-spacing: var(--ls-footer);
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
+.slide.dark .slide-footer { color: rgba(255,255,255,0.6); }
+
+/* =========================================================
+   Body 영역 (Header 아래 ~ Footer 위)
+   ========================================================= */
+
+.slide-body {
+  position: absolute;
+  top: var(--body-top);
+  left: var(--pad-x);
+  right: var(--pad-x);
+  bottom: 110px;                  /* Footer 위 여유 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   Typography Classes
+   ========================================================= */
+
+.t-mega {
+  font-size: var(--fs-mega);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-mega);
+  text-transform: uppercase;
+}
+
+.t-section {
+  font-size: var(--fs-section-title);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  text-transform: uppercase;
+}
+
+.t-page {
+  font-size: var(--fs-page-title);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  text-transform: uppercase;
+}
+
+.t-chapter {
+  font-size: var(--fs-chapter-num);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-heading);
+}
+
+.t-h1 {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  line-height: 1.3;
+}
+
+.t-h2 {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  line-height: 1.3;
+}
+
+.t-lead {
+  font-size: var(--fs-lead);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-body);
+  color: var(--gray-600);
+}
+
+.t-body {
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-default);
+  color: var(--near-black);
+}
+
+.t-caption {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-caption);
+  color: var(--gray-600);
+}
+
+/* Meta Label — UPPER + 자간 0.15em + 11pt Medium */
+.t-meta {
+  font-size: var(--fs-meta);
+  font-weight: var(--fw-medium);
+  line-height: 1.3;
+  letter-spacing: var(--ls-meta);
+  text-transform: uppercase;
+  color: var(--gray-600);
+}
+.slide.dark .t-meta { color: rgba(255,255,255,0.7); }
+
+/* 강조 단어 (Mega/Section/Page Title 안 단어 1개에 한정) */
+.t-accent { color: var(--olist-blue); }
+.slide.dark .t-accent { color: var(--white); }
+
+/* =========================================================
+   Components
+   ========================================================= */
+
+/* 6.1 Index Card (Type 3 Section Intro) */
+.index-card {
+  width: 240px;
+}
+.index-card .accent-bar {
+  width: 30px;
+  height: 2px;
+  background: var(--olist-blue);
+  margin-bottom: 16px;
+}
+.index-card .num {
+  font-size: 24px;
+  font-weight: var(--fw-black);
+  color: var(--olist-blue);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.index-card .title {
+  font-size: 16px;
+  font-weight: var(--fw-bold);
+  color: var(--near-black);
+  margin-bottom: 6px;
+}
+.index-card .desc {
+  font-size: 12px;
+  font-weight: var(--fw-regular);
+  color: var(--gray-600);
+  line-height: 1.4;
+}
+
+/* 6.2 Highlight Box (Type 4 강조) */
+.highlight-box {
+  background: var(--blue-tint);
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.highlight-box .num-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-round);
+  background: var(--olist-blue);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.highlight-box .title {
+  font-size: 14px;
+  font-weight: var(--fw-bold);
+  color: var(--olist-blue);
+  margin-bottom: 4px;
+}
+.highlight-box .desc {
+  font-size: 12px;
+  color: var(--near-black);
+}
+
+/* 6.3 Stat Block */
+.stat {
+  text-align: left;
+}
+.stat .number {
+  font-size: 96px;
+  font-weight: var(--fw-black);
+  color: var(--olist-blue);
+  line-height: 1;
+  letter-spacing: var(--ls-heading);
+}
+.stat .label {
+  /* Meta Label 적용 권장 — class="t-meta" 추가 */
+}
+.stat .desc {
+  font-size: var(--fs-body);
+  color: var(--near-black);
+  margin-top: 8px;
+}
+
+/* 6.4 Divider Line */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--gray-200);
+}
+.divider-vert {
+  width: 1px;
+  height: 100%;
+  background: var(--gray-200);
+}
+
+/* SCR Card (Type 10) */
+.scr-card {
+  border-left: 6px solid var(--gray-400);
+  padding: 24px 32px;
+  background: var(--white);
+}
+.scr-card.situation { border-left-color: var(--gray-400); }
+.scr-card.complication { border-left-color: var(--gray-800); }
+.scr-card.resolution {
+  border-left-color: var(--olist-blue);
+  background: var(--blue-tint);
+}
+
+/* Hypothesis Tree Root (Type 12) */
+.tree-root {
+  background: var(--olist-blue);
+  color: var(--white);
+  padding: 24px 32px;
+  width: 240px;
+}
+.tree-node {
+  border: 1px solid var(--gray-200);
+  padding: 16px 20px;
+  background: var(--white);
+}
+.tree-node.highlight {
+  border-color: var(--olist-blue);
+  background: var(--blue-tint);
+}
+
+/* Persona Avatar (Type 13) */
+.persona-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-round);
+  background: var(--olist-blue);
+  color: var(--white);
+  font-size: 56px;
+  font-weight: var(--fw-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Roadmap Cell (Type 14) */
+.roadmap-cell {
+  background: var(--gray-200);
+  padding: 12px;
+  position: relative;
+}
+.roadmap-cell.highlight { background: var(--blue-tint); border-left: 4px solid var(--olist-blue); }
+.roadmap-cell .priority {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  background: var(--near-black);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.roadmap-cell.highlight .priority { background: var(--olist-blue); }
