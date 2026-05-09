@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BF 번들 기획전 — Olist MD팀 제안</title>
+<style>
+  :root {
+    --navy: #1a1a2e;
+    --deep: #0f3460;
+    --accent: #e94560;
+    --accent-soft: rgba(233,69,96,0.12);
+    --gold: #f5a623;
+    --green: #27ae60;
+    --card: rgba(255,255,255,0.05);
+    --border: rgba(255,255,255,0.1);
+    --t1: #ffffff;
+    --t2: rgba(255,255,255,0.65);
+    --t3: rgba(255,255,255,0.38);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--navy);
+    color: var(--t1);
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+
+  /* ── HEADER ── */
+  .hero {
+    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0f3460 100%);
+    padding: 72px 48px 64px;
+    border-bottom: 1px solid rgba(233,69,96,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content:'';
+    position:absolute; top:-120px; right:-80px;
+    width:480px; height:480px;
+    background: radial-gradient(circle, rgba(233,69,96,0.12) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero-tag {
+    display:inline-block;
+    background: var(--accent-soft);
+    border: 1px solid rgba(233,69,96,0.35);
+    color: #ff8fa3;
+    font-size:11px; font-weight:700; letter-spacing:2px;
+    text-transform:uppercase; padding:5px 14px; border-radius:20px;
+    margin-bottom:24px;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight:800; line-height:1.2; margin-bottom:14px;
+  }
+  .hero h1 em {
+    font-style:normal; color: var(--accent);
+  }
+  .hero-oneliner {
+    font-size:1.1rem; color: var(--t2); max-width:620px;
+    padding:14px 20px;
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid var(--accent);
+    border-radius:0 8px 8px 0;
+    margin-top:8px;
+  }
+  .hero-meta {
+    margin-top:28px; display:flex; gap:28px; flex-wrap:wrap;
+  }
+  .hero-meta span {
+    font-size:0.82rem; color: var(--t3);
+    display:flex; align-items:center; gap:6px;
+  }
+  .hero-meta span::before {
+    content:''; width:5px; height:5px; border-radius:50%; background:var(--accent);
+  }
+
+  /* ── SECTION BASE ── */
+  .sec { padding: 64px 48px; }
+  .sec-label {
+    font-size:10px; font-weight:700; letter-spacing:2.5px;
+    text-transform:uppercase; color:var(--accent); margin-bottom:8px;
+  }
+  .sec-title { font-size:clamp(1.3rem,2.2vw,1.7rem); font-weight:700; margin-bottom:6px; }
+  .sec-sub { font-size:0.9rem; color:var(--t2); margin-bottom:36px; }
+
+  /* ── SEC 1: WHY — 3 BIG NUMBERS ── */
+  .why-sec { background:#111124; border-bottom:1px solid var(--border); }
+  .why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .why-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:14px; padding:32px 28px; position:relative; overflow:hidden;
+  }
+  .why-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  }
+  .why-card.red::before  { background: linear-gradient(90deg,#e94560,transparent); }
+  .why-card.blue::before { background: linear-gradient(90deg,#4facfe,transparent); }
+  .why-card.gold::before { background: linear-gradient(90deg,#f5a623,transparent); }
+  .why-num {
+    font-size:3.4rem; font-weight:800; line-height:1; margin-bottom:10px;
+  }
+  .why-card.red  .why-num { color:var(--accent); }
+  .why-card.blue .why-num { color:#4facfe; }
+  .why-card.gold .why-num { color:var(--gold); }
+  .why-title { font-size:1rem; font-weight:600; margin-bottom:6px; }
+  .why-desc  { font-size:0.83rem; color:var(--t2); line-height:1.55; }
+
+  /* ── SEC 2: BUNDLE MOCKUP ── */
+  .mockup-sec { background:var(--navy); border-bottom:1px solid var(--border); }
+  .bundle-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .bcard {
+    background:#fff; border-radius:14px; overflow:hidden;
+    box-shadow:0 16px 48px rgba(0,0,0,0.45); color:#1a1a2e;
+  }
+  .bcard-top {
+    padding:12px 14px 10px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:1px solid #f0f0f0;
+  }
+  .bcard-badge {
+    font-size:9.5px; font-weight:800; letter-spacing:0.5px;
+    color:#fff; padding:3px 8px; border-radius:4px;
+    background:var(--accent);
+  }
+  .bcard-tag {
+    font-size:9px; color:#888; font-weight:600;
+    text-transform:uppercase; letter-spacing:0.5px;
+  }
+  .bcard-img {
+    height:110px; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:6px;
+    font-size:36px;
+  }
+  .bcard-img.bed   { background:linear-gradient(145deg,#e8f4ff,#c8dcf5); }
+  .bcard-img.beauty{ background:linear-gradient(145deg,#fde8f4,#f5c8e0); }
+  .bcard-img.home  { background:linear-gradient(145deg,#e8f8ee,#c8ecd8); }
+  .bcard-img span  { font-size:10px; font-weight:700; color:#666; }
+  .bcard-body { padding:12px 14px; }
+  .bcard-name { font-size:12px; font-weight:700; color:#1a1a2e; margin-bottom:10px; }
+  .bcard-price-row {
+    display:flex; align-items:center; gap:8px; margin-bottom:5px;
+  }
+  .bcard-old { font-size:11px; color:#aaa; text-decoration:line-through; }
+  .bcard-dis { font-size:10px; color:#fff; background:var(--accent); padding:1px 5px; border-radius:3px; font-weight:700; }
+  .bcard-new { font-size:15px; font-weight:800; color:#1a1a2e; }
+  .bcard-ship {
+    display:flex; align-items:center; gap:4px;
+    font-size:10px; color:#27ae60; font-weight:700;
+    background:#eafaf1; border:1px solid #b7e4c7;
+    padding:3px 7px; border-radius:4px; width:fit-content;
+    margin-bottom:10px;
+  }
+  .bcard-save {
+    font-size:10.5px; color:#7d5a00; font-weight:700;
+    background:#fff8e1; border:1px solid #ffe082;
+    padding:5px 8px; border-radius:5px; text-align:center;
+  }
+  .bcard-btn {
+    width:100%; margin-top:8px; padding:8px;
+    background:var(--accent); color:#fff;
+    font-size:11px; font-weight:700; border:none;
+    border-radius:6px; text-align:center;
+    cursor:pointer;
+  }
+
+  /* ── SEC 3: CATEGORIES ── */
+  .cat-sec { background:#111124; border-bottom:1px solid var(--border); }
+  .cat-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+  .cat-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:12px; padding:20px 16px; text-align:center;
+  }
+  .cat-rank {
+    font-size:9px; font-weight:700; color:var(--accent);
+    letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;
+  }
+  .cat-icon { font-size:28px; margin-bottom:8px; }
+  .cat-name { font-size:11px; font-weight:700; color:var(--t1); margin-bottom:10px; line-height:1.3; }
+  .cat-bf {
+    font-size:18px; font-weight:800; color:var(--t1); line-height:1; margin-bottom:2px;
+  }
+  .cat-bf-label { font-size:9px; color:var(--t3); margin-bottom:8px; }
+  .cat-rate-bar {
+    height:4px; border-radius:2px;
+    background:rgba(255,255,255,0.1); margin-bottom:4px; overflow:hidden;
+  }
+  .cat-rate-fill { height:100%; border-radius:2px; background:var(--accent); }
+  .cat-rate-label { font-size:9px; color:var(--t3); }
+
+  /* ── SEC 4: IMPACT ── */
+  .impact-sec { background:var(--navy); border-bottom:1px solid var(--border); }
+  .impact-flow {
+    display:flex; align-items:stretch; gap:0; margin-bottom:44px;
+  }
+  .impact-step {
+    flex:1; background:var(--card); border:1px solid var(--border);
+    border-radius:0; padding:28px 24px; position:relative;
+  }
+  .impact-step:first-child { border-radius:12px 0 0 12px; }
+  .impact-step:last-child  { border-radius:0 12px 12px 0; }
+  .impact-arrow {
+    width:40px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--accent); font-size:18px;
+    background:var(--card); border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  }
+  .impact-step-num {
+    font-size:10px; font-weight:700; color:var(--accent);
+    letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;
+  }
+  .impact-step-title { font-size:0.95rem; font-weight:700; margin-bottom:6px; }
+  .impact-step-desc { font-size:0.8rem; color:var(--t2); line-height:1.5; }
+  .impact-step-tag {
+    display:inline-block; margin-top:10px;
+    font-size:10px; font-weight:700;
+    background:var(--accent-soft); border:1px solid rgba(233,69,96,0.3);
+    color:#ff8fa3; padding:3px 8px; border-radius:4px;
+  }
+
+  .impact-nums { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .impact-num-card {
+    border-radius:14px; padding:28px 24px; text-align:center; position:relative; overflow:hidden;
+  }
+  .impact-num-card.small { background:var(--card); border:1px solid var(--border); }
+  .impact-num-card.mid   { background:rgba(233,69,96,0.08); border:1px solid rgba(233,69,96,0.25); }
+  .impact-num-card.big   {
+    background:linear-gradient(135deg,rgba(233,69,96,0.15),rgba(233,69,96,0.05));
+    border:2px solid rgba(233,69,96,0.4);
+  }
+  .impact-num-label { font-size:10px; font-weight:700; color:var(--t3); letter-spacing:1px; margin-bottom:12px; text-transform:uppercase; }
+  .impact-num-val {
+    font-size:2.4rem; font-weight:800; line-height:1; margin-bottom:6px;
+  }
+  .impact-num-card.small .impact-num-val { color:var(--t2); }
+  .impact-num-card.mid   .impact-num-val { color:var(--accent); }
+  .impact-num-card.big   .impact-num-val { color:var(--accent); font-size:3rem; }
+  .impact-num-sub { font-size:0.8rem; color:var(--t3); line-height:1.4; }
+  .impact-num-card.big .impact-num-sub { color:var(--t2); }
+  .best-badge {
+    position:absolute; top:12px; right:12px;
+    font-size:9px; font-weight:800; color:#fff;
+    background:var(--accent); padding:2px 8px; border-radius:10px;
+    letter-spacing:0.5px;
+  }
+
+  /* ── SEC 5: DECISION ── */
+  .decision-sec { background:#111124; }
+  .decision-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:28px; }
+  .dec-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:12px; padding:24px 20px;
+  }
+  .dec-num {
+    width:32px; height:32px; border-radius:50%;
+    background:var(--accent-soft); border:1px solid rgba(233,69,96,0.3);
+    color:var(--accent); font-size:13px; font-weight:800;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:12px;
+  }
+  .dec-title { font-size:0.9rem; font-weight:700; margin-bottom:6px; }
+  .dec-val {
+    font-size:1.05rem; font-weight:800; color:var(--accent); margin-bottom:4px;
+  }
+  .dec-desc { font-size:0.78rem; color:var(--t3); line-height:1.4; }
+  .dec-date {
+    display:inline-block; margin-top:8px;
+    font-size:10px; color:var(--t3);
+    background:var(--card); border:1px solid var(--border);
+    padding:2px 8px; border-radius:4px;
+  }
+  .banner-bottom {
+    background:linear-gradient(135deg,rgba(233,69,96,0.12),rgba(233,69,96,0.04));
+    border:1px solid rgba(233,69,96,0.25); border-radius:12px;
+    padding:24px 28px;
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;
+  }
+  .banner-bottom-text { font-size:1rem; font-weight:700; color:var(--t1); }
+  .banner-bottom-text span { color:var(--accent); }
+  .banner-nums { display:flex; gap:28px; flex-wrap:wrap; }
+  .banner-num { text-align:center; }
+  .banner-num b { display:block; font-size:1.2rem; font-weight:800; color:var(--accent); }
+  .banner-num small { font-size:10px; color:var(--t3); }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding:20px 48px; border-top:1px solid var(--border);
+    font-size:0.75rem; color:var(--t3);
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-tag">Olist MD팀 제안 · 2026.05</div>
+    <h1>블랙프라이데이(BF) 번들 기획전 —<br><em>파일럿에서 상시 정책으로</em></h1>
+    <p class="hero-oneliner">
+      BF 1주 ₩302만을 버는 게 목적이 아니다.<br>
+      연 GMV +₩3,540만 규모의 상시 번들 정책을 세팅하기 위한 파일럿이다.
+    </p>
+    <div class="hero-meta">
+      <span>BF 2017 실측 CSV 기반</span>
+      <span>상위 5개 카테고리</span>
+      <span>번들 합계 ₩40,000 이상</span>
+      <span>2개 함께 사면 15% 할인 + 무료 배송</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── SEC 1: 왜 번들인가 ── -->
+<section class="why-sec">
+  <div class="sec wrap">
+    <div class="sec-label">왜 번들인가</div>
+    <div class="sec-title">할인도 없는데 이미 함께 사는 고객이 있다</div>
+    <div class="sec-sub">공식 번들 프로모션이 단 한 번도 없었는데도 데이터는 이미 수요를 보여주고 있다.</div>
+    <div class="why-grid">
+      <div class="why-card red">
+        <div class="why-num">9.01%</div>
+        <div class="why-title">자연 발생 다품목 구매</div>
+        <div class="why-desc">할인도 없고, 기획전도 없었다. 그런데도 전체 주문의 9%는 동일 셀러에서 2개 이상을 구매했다. 인센티브가 생기면 이 비율은 더 올라간다.</div>
+      </div>
+      <div class="why-card blue">
+        <div class="why-num">45.9%</div>
+        <div class="why-title">번들 실행 가능한 셀러</div>
+        <div class="why-desc">전체 셀러의 절반 가까이가 이미 다품목 주문을 받은 경험이 있다. 번들 기획전 참여 기반이 충분하다.</div>
+      </div>
+      <div class="why-card gold">
+        <div class="why-num">97%</div>
+        <div class="why-title">동일 카테고리 내 구매</div>
+        <div class="why-desc">함께 구매하는 상품의 97%가 같은 카테고리다. 고객은 이미 관련 상품을 세트로 생각하고 있다 — 공식 번들만 없었을 뿐.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEC 2: 번들 UI 목업 ── -->
+<section class="mockup-sec">
+  <div class="sec wrap">
+    <div class="sec-label">번들 상품 노출</div>
+    <div class="sec-title">고객이 실제로 보게 될 화면</div>
+    <div class="sec-sub">2개 함께 사면 할인 + 무료 배송. 개별로 따로 살 때보다 최대 27% 저렴하다.</div>
+    <div class="bundle-grid">
+
+      <!-- 침실 완성 세트 -->
+      <div class="bcard">
+        <div class="bcard-top">
+          <span class="bcard-badge">BF 번들</span>
+          <span class="bcard-tag">침대·욕실</span>
+        </div>
+        <div class="bcard-img bed">🛏<span>침실 완성 세트</span></div>
+        <div class="bcard-body">
+          <div class="bcard-name">퀸 침대 커버 + 베개 커버 세트</div>
+          <div class="bcard-price-row">
+            <span class="bcard-old">₩51,944</span>
+            <span class="bcard-dis">세트 할인</span>
+          </div>
+          <div class="bcard-new">₩44,696</div>
+          <div class="bcard-ship">🚚 무료 배송</div>
+          <div class="bcard-save">💰 개별 구매 대비 ₩14,124 절약 (27%)</div>
+          <div class="bcard-btn">번들로 구매하기</div>
+        </div>
+      </div>
+
+      <!-- 뷰티 루틴 세트 -->
+      <div class="bcard">
+        <div class="bcard-top">
+          <span class="bcard-badge">BF 번들</span>
+          <span class="bcard-tag">헬스·뷰티</span>
+        </div>
+        <div class="bcard-img beauty">💄<span>뷰티 루틴 세트</span></div>
+        <div class="bcard-body">
+          <div class="bcard-name">스킨케어 + 토너 패드 세트</div>
+          <div class="bcard-price-row">
+            <span class="bcard-old">₩73,990</span>
+            <span class="bcard-dis">세트 할인</span>
+          </div>
+          <div class="bcard-new">₩65,590</div>
+          <div class="bcard-ship">🚚 무료 배송</div>
+          <div class="bcard-save">💰 개별 구매 대비 ₩15,280 절약 (21%)</div>
+          <div class="bcard-btn">번들로 구매하기</div>
+        </div>
+      </div>
+
+      <!-- 홈 인테리어 세트 -->
+      <div class="bcard">
+        <div class="bcard-top">
+          <span class="bcard-badge">BF 번들</span>
+          <span class="bcard-tag">가구·인테리어</span>
+        </div>
+        <div class="bcard-img home">🏠<span>홈 인테리어 세트</span></div>
+        <div class="bcard-body">
+          <div class="bcard-name">패브릭 쿠션 + 미니 조명 세트</div>
+          <div class="bcard-price-row">
+            <span class="bcard-old">₩50,736</span>
+            <span class="bcard-dis">세트 할인</span>
+          </div>
+          <div class="bcard-new">₩44,526</div>
+          <div class="bcard-ship">🚚 무료 배송</div>
+          <div class="bcard-save">💰 개별 구매 대비 ₩13,090 절약 (25%)</div>
+          <div class="bcard-btn">번들로 구매하기</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SEC 3: 추천 카테고리 ── -->
+<section class="cat-sec">
+  <div class="sec wrap">
+    <div class="sec-label">카테고리 선정</div>
+    <div class="sec-title">BF 실측 데이터로 고른 상위 5개</div>
+    <div class="sec-sub">BF 2017 주문량이 많고, 이미 함께 사는 비율이 높은 카테고리 순으로 선정했다.</div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-rank">★ 1순위</div>
+        <div class="cat-icon">🛏</div>
+        <div class="cat-name">침대·욕실</div>
+        <div class="cat-bf">371건</div>
+        <div class="cat-bf-label">BF 주간 주문 (1위)</div>
+        <div class="cat-rate-label" style="margin-top:6px">함께 구매 비율 12.7%</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-rank">2순위</div>
+        <div class="cat-icon">🪑</div>
+        <div class="cat-name">가구·인테리어</div>
+        <div class="cat-bf">245건</div>
+        <div class="cat-bf-label">BF 주간 주문</div>
+        <div class="cat-rate-label" style="margin-top:6px">함께 구매 비율 19.0% ★최고</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-rank">3순위</div>
+        <div class="cat-icon">💄</div>
+        <div class="cat-name">헬스·뷰티</div>
+        <div class="cat-bf">229건</div>
+        <div class="cat-bf-label">BF 주간 주문</div>
+        <div class="cat-rate-label" style="margin-top:6px">평균 단가 ₩39,436 ★최고</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-rank">4순위</div>
+        <div class="cat-icon">⚽</div>
+        <div class="cat-name">스포츠·레저</div>
+        <div class="cat-bf">223건</div>
+        <div class="cat-bf-label">BF 주간 주문</div>
+        <div class="cat-rate-label" style="margin-top:6px">함께 구매 비율 8.9%</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-rank">5순위</div>
+        <div class="cat-icon">🍳</div>
+        <div class="cat-name">주방·생활용품</div>
+        <div class="cat-bf">145건</div>
+        <div class="cat-bf-label">BF 주간 주문</div>
+        <div class="cat-rate-label" style="margin-top:6px">함께 구매 비율 11.2%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEC 4: 임팩트 ── -->
+<section class="impact-sec">
+  <div class="sec wrap">
+    <div class="sec-label">기대 임팩트</div>
+    <div class="sec-title">BF는 테스트, 진짜 목표는 상시화</div>
+    <div class="sec-sub">BF 한 주만 보면 작아 보인다. 상시 정책으로 이어지면 달라진다.</div>
+
+    <!-- 흐름 -->
+    <div class="impact-flow" style="margin-bottom:36px;">
+      <div class="impact-step">
+        <div class="impact-step-num">Step 1 · 11월</div>
+        <div class="impact-step-title">BF 파일럿</div>
+        <div class="impact-step-desc">상위 5개 카테고리, 번들 10개 출시. 전환율 실측.</div>
+        <div class="impact-step-tag">배송비 ₩83만/주 (Olist 부담)</div>
+      </div>
+      <div class="impact-arrow">→</div>
+      <div class="impact-step">
+        <div class="impact-step-num">Step 2 · 11월 말</div>
+        <div class="impact-step-title">데이터 수집</div>
+        <div class="impact-step-desc">번들 전환율, 셀러 참여율, 고객 반응 확인.</div>
+        <div class="impact-step-tag">다품목 구매 비중 목표 달성 여부 확인</div>
+      </div>
+      <div class="impact-arrow">→</div>
+      <div class="impact-step">
+        <div class="impact-step-num">Step 3 · 12월~</div>
+        <div class="impact-step-title">상시화 결정</div>
+        <div class="impact-step-desc">전환율 기준 충족 시 상위 번들 상시 운영 전환.</div>
+        <div class="impact-step-tag">연 GMV +₩3,540만</div>
+      </div>
+    </div>
+
+    <!-- 3개 숫자 -->
+    <div class="impact-nums">
+      <div class="impact-num-card small">
+        <div class="impact-num-label">BF 1주 추가 GMV</div>
+        <div class="impact-num-val">₩302만</div>
+        <div class="impact-num-sub">전환 121건 × 2번째 상품 평균가 ₩25,000<br>(원래 안 샀을 상품의 추가 매출만 계산)</div>
+      </div>
+      <div class="impact-num-card mid">
+        <div class="impact-num-label">상시화 월 GMV</div>
+        <div class="impact-num-val">₩295만</div>
+        <div class="impact-num-sub">월 전체 주문 중 번들 가능 고객 789건<br>(₩40,000 이상 단품 구매자) 15% 전환 기준</div>
+      </div>
+      <div class="impact-num-card big">
+        <div class="best-badge">연간 목표</div>
+        <div class="impact-num-label">상시화 연간 GMV</div>
+        <div class="impact-num-val">₩3,540만</div>
+        <div class="impact-num-sub">월 ₩295만 × 12개월<br>Top5 카테고리 상시 운영 기준</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEC 5: 경영진 결정 ── -->
+<section class="decision-sec">
+  <div class="sec wrap">
+    <div class="sec-label">경영진 결정 요청</div>
+    <div class="sec-title">9월 1주 안에 확정이 필요한 3가지</div>
+    <div class="sec-sub">셀러 협의에 최소 6주가 걸린다. 9월 1주 착수 못하면 BF 실행이 불가능하다.</div>
+    <div class="decision-grid">
+      <div class="dec-card">
+        <div class="dec-num">1</div>
+        <div class="dec-title">번들 파일럿 예산 승인</div>
+        <div class="dec-val">₩83만 / BF 주</div>
+        <div class="dec-desc">Olist는 무료배송 비용만 부담. 15% 할인은 셀러가 제공 — 셀러도 안 팔릴 재고가 확정 수익으로 전환되므로 손해가 아니다.</div>
+        <div class="dec-date">기한: 9월 1주</div>
+      </div>
+      <div class="dec-card">
+        <div class="dec-num">2</div>
+        <div class="dec-title">카테고리 5개 + 번들 10개 확정</div>
+        <div class="dec-val">침대·욕실 외 4개</div>
+        <div class="dec-desc">MD팀이 셀러 협의 시작을 위해 카테고리와 번들 구성 리스트가 필요하다.</div>
+        <div class="dec-date">기한: 9월 1주</div>
+      </div>
+      <div class="dec-card">
+        <div class="dec-num">3</div>
+        <div class="dec-title">상시화 판단 기준 합의</div>
+        <div class="dec-val">BF 종료 후 결정</div>
+        <div class="dec-desc">BF 전환율이 어느 수준 이상이면 12월부터 상시화할지, 기준을 미리 합의해둬야 BF 종료 후 즉시 판단할 수 있다.</div>
+        <div class="dec-date">기한: 9월 2주</div>
+      </div>
+    </div>
+    <div class="banner-bottom">
+      <div class="banner-bottom-text">
+        BF 파일럿 → 검증 → 상시화 —<br>
+        <span>연 GMV +₩3,540만</span>의 시작점
+      </div>
+      <div class="banner-nums">
+        <div class="banner-num"><b>₩83만</b><small>BF 파일럿 배송비 (Olist 부담)</small></div>
+        <div class="banner-num"><b>14.4%</b><small>번들 전환 시 BF 다품목 구매 비중 (현재 11.5%)</small></div>
+        <div class="banner-num"><b>₩3,540만</b><small>상시화 연간 GMV</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <span>Olist MD팀 번들 기획전 제안 · 2026.05</span>
+  <span>데이터 출처: BF 2017 실측 CSV · integrated_okr_plan.md SSoT · BRL 1 = ₩302</span>
+</footer>
+
+</body>
+</html>
