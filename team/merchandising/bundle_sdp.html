@@ -2,907 +2,859 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>침실 완성 세트 — Olist</title>
+<title>침실 완성 번들 세트 — Olist</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    width: 900px;
-    min-height: 1100px;
-    font-family: Arial, 'Helvetica Neue', sans-serif;
-    background: #ffffff;
-    color: #1a1a2e;
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  /* ── NAV ── */
-  .nav {
-    width: 900px;
-    height: 54px;
-    background: #1a1a2e;
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-    gap: 16px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-
-  .nav-logo {
-    font-size: 22px;
-    font-weight: 900;
-    color: #ffffff;
-    letter-spacing: -0.5px;
-    flex-shrink: 0;
-  }
-  .nav-logo span { color: #e94560; }
-
-  .nav-search {
-    flex: 1;
-    height: 32px;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    padding: 0 12px;
-    gap: 8px;
-  }
-  .nav-search-text {
-    font-size: 12px;
-    color: rgba(255,255,255,0.4);
-  }
-  .nav-search-icon { font-size: 12px; color: rgba(255,255,255,0.3); }
-
-  .nav-cart {
-    flex-shrink: 0;
-    font-size: 12px;
-    color: rgba(255,255,255,0.8);
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
-  }
-
-  /* ── BREADCRUMB ── */
-  .breadcrumb {
-    padding: 10px 24px;
-    font-size: 12px;
-    color: #888;
-    background: #f9f9f9;
-    border-bottom: 1px solid #eee;
-  }
-  .breadcrumb a { color: #e94560; text-decoration: none; }
-  .breadcrumb span { margin: 0 4px; color: #bbb; }
-
-  /* ── MAIN CONTENT ── */
-  .main-content {
-    padding: 20px 24px;
-  }
-
-  /* ── PRODUCT HERO ── */
-  .product-hero {
-    display: flex;
-    gap: 28px;
-    margin-bottom: 32px;
-  }
-
-  /* LEFT: image */
-  .product-image-col {
-    width: 360px;
-    flex-shrink: 0;
-    position: relative;
-  }
-
-  .product-image-placeholder {
-    width: 360px;
-    height: 360px;
-    background: linear-gradient(145deg, #e0ecff 0%, #c8d9f5 40%, #b0c8f0 100%);
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #dde8f8;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .product-image-placeholder::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 60%);
-    border-radius: 12px;
-  }
-
-  .product-image-emoji {
-    font-size: 80px;
-    line-height: 1;
-    position: relative;
-    z-index: 1;
-  }
-
-  .product-image-label {
-    font-size: 13px;
-    font-weight: 700;
-    color: #4a6fa5;
-    margin-top: 12px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* BF ribbon on image */
-  .bf-ribbon {
-    position: absolute;
-    top: 18px;
-    right: -28px;
-    background: #e94560;
-    color: white;
-    font-size: 10px;
-    font-weight: 900;
-    padding: 5px 36px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transform: rotate(45deg);
-    transform-origin: center;
-    box-shadow: 0 2px 8px rgba(233,69,96,0.5);
-    z-index: 2;
-  }
-
-  .image-thumb-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-  }
-  .thumb {
-    width: 60px;
-    height: 60px;
-    border-radius: 6px;
-    border: 2px solid #dde8f8;
-    background: linear-gradient(145deg, #e8f0fc, #c8d9f5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  .thumb.active { border-color: #e94560; }
-
-  /* RIGHT: product details */
-  .product-details-col {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .bf-kit-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background: linear-gradient(90deg, #e94560, #c0392b);
-    color: white;
-    font-size: 11px;
-    font-weight: 800;
-    padding: 4px 12px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-    margin-bottom: 10px;
-  }
-
-  .product-title {
-    font-size: 20px;
-    font-weight: 800;
-    color: #1a1a2e;
-    line-height: 1.3;
-    margin-bottom: 8px;
-  }
-
-  .seller-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-  .seller-name {
-    font-size: 12.5px;
-    color: #555;
-  }
-  .seller-name strong { color: #e94560; }
-
-  .stars {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    margin-bottom: 14px;
-  }
-  .star-icons { color: #f5c842; font-size: 14px; letter-spacing: 1px; }
-  .star-count { font-size: 12px; color: #888; }
-
-  /* PRICING SECTION */
-  .pricing-box {
-    background: linear-gradient(135deg, #fff8f9 0%, #fff2f4 100%);
-    border: 2px solid #e94560;
-    border-radius: 10px;
-    padding: 16px;
-    margin-bottom: 16px;
-    position: relative;
-  }
-
-  .pricing-box::before {
-    content: '최저가';
-    position: absolute;
-    top: -10px;
-    left: 16px;
-    background: #e94560;
-    color: white;
-    font-size: 9px;
-    font-weight: 800;
-    padding: 2px 10px;
-    border-radius: 10px;
-    letter-spacing: 1px;
-  }
-
-  .price-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 6px;
-  }
-
-  .price-label {
-    font-size: 11.5px;
-    color: #888;
-    width: 130px;
-    flex-shrink: 0;
-  }
-
-  .price-value-old {
-    font-size: 14px;
-    color: #aaa;
-    text-decoration: line-through;
-  }
-
-  .price-frete-old {
-    font-size: 11px;
-    color: #bbb;
-    margin-left: 4px;
-  }
-
-  .price-arrow {
-    font-size: 18px;
-    color: #e94560;
-    text-align: center;
-    margin: 4px 0;
-    padding-left: 130px;
-  }
-
-  .price-row-new {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-top: 2px;
-  }
-
-  .price-label-new {
-    font-size: 12px;
-    color: #1a1a2e;
-    font-weight: 700;
-    width: 130px;
-    flex-shrink: 0;
-  }
-
-  .price-value-new {
-    font-size: 26px;
-    font-weight: 900;
-    color: #1a1a2e;
-    line-height: 1;
-  }
-
-  .frete-gratis-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 3px;
-    background: #e8f8ee;
-    color: #2d8a4e;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 4px;
-    border: 1px solid #b3e5c3;
-  }
-
-  .savings-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background: #fff3cd;
-    border: 1px solid #f5c842;
-    color: #7d5a00;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 6px;
-    margin-top: 10px;
-  }
-
-  /* Bundle breakdown box */
-  .bundle-breakdown {
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 12px 14px;
-    margin-bottom: 16px;
-  }
-
-  .bundle-breakdown-title {
-    font-size: 12px;
-    font-weight: 800;
-    color: #1a1a2e;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .bundle-item-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px 0;
-    border-bottom: 1px dashed #e5e7eb;
-  }
-  .bundle-item-row:last-of-type { border-bottom: none; }
-
-  .bundle-item-name {
-    font-size: 12.5px;
-    color: #333;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .bundle-item-name .check { color: #2d8a4e; font-size: 12px; }
-
-  .bundle-item-price {
-    font-size: 12.5px;
-    font-weight: 600;
-    color: #1a1a2e;
-    text-align: right;
-  }
-
-  .bundle-item-price .original {
-    text-decoration: line-through;
-    color: #aaa;
-    font-weight: 400;
-    font-size: 11px;
-    display: block;
-  }
-
-  .bundle-item-price .discount-tag {
-    font-size: 10px;
-    background: #e94560;
-    color: white;
-    padding: 1px 5px;
-    border-radius: 3px;
-    margin-left: 4px;
-    font-weight: 700;
-  }
-
-  .bundle-total-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 2px solid #1a1a2e;
-  }
-
-  .bundle-total-label { font-size: 13px; font-weight: 800; color: #1a1a2e; }
-  .bundle-total-value { font-size: 15px; font-weight: 900; color: #e94560; }
-
-  .bundle-frete-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 4px;
-  }
-  .bundle-frete-label { font-size: 11.5px; color: #555; }
-  .bundle-frete-value { font-size: 12px; font-weight: 700; color: #2d8a4e; }
-
-  /* CTA buttons */
-  .cta-section {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-
-  .btn-primary {
-    width: 100%;
-    padding: 14px 20px;
-    background: linear-gradient(90deg, #e94560, #c0392b);
-    color: white;
-    font-size: 15px;
-    font-weight: 800;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    letter-spacing: 0.3px;
-    box-shadow: 0 4px 16px rgba(233, 69, 96, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .btn-secondary {
-    width: 100%;
-    padding: 10px 20px;
-    background: #f5f5f5;
-    color: #555;
-    font-size: 13px;
-    font-weight: 600;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-  }
-
-  /* Trust badges */
-  .trust-row {
-    display: flex;
-    gap: 0;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .trust-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 8px 4px;
-    background: #fafafa;
-    border-right: 1px solid #e5e7eb;
-    font-size: 10px;
-    color: #555;
-    text-align: center;
-    gap: 3px;
-  }
-  .trust-item:last-child { border-right: none; }
-  .trust-icon { font-size: 16px; }
-  .trust-label { font-weight: 600; font-size: 10px; color: #333; }
-
-  /* ── COMPARISON SECTION ── */
-  .comparison-section {
-    margin-bottom: 32px;
-  }
-
-  .section-title {
-    font-size: 17px;
-    font-weight: 800;
-    color: #1a1a2e;
-    margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #f0f0f0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .comparison-grid {
-    display: flex;
-    gap: 16px;
-  }
-
-  .comparison-box {
-    flex: 1;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  .comp-header {
-    padding: 12px 16px;
-    font-size: 13px;
-    font-weight: 800;
-    text-align: center;
-    letter-spacing: 0.3px;
-  }
-
-  .comp-header-separate {
-    background: #6c757d;
-    color: white;
-  }
-
-  .comp-header-bundle {
-    background: linear-gradient(90deg, #e94560, #c0392b);
-    color: white;
-  }
-
-  .comp-body {
-    padding: 16px;
-  }
-
-  .comp-body-separate { background: #f5f5f5; border: 1px solid #ddd; border-top: none; border-radius: 0 0 10px 10px; }
-  .comp-body-bundle { background: #fff8f9; border: 2px solid #e94560; border-top: none; border-radius: 0 0 10px 10px; }
-
-  .comp-line {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0;
-    border-bottom: 1px dashed #ddd;
-    font-size: 13px;
-  }
-  .comp-line:last-of-type { border-bottom: none; }
-
-  .comp-line-label { color: #444; }
-  .comp-line-value { font-weight: 600; color: #1a1a2e; }
-  .comp-line-value.strike { text-decoration: line-through; color: #aaa; font-weight: 400; }
-  .comp-line-value.green { color: #2d8a4e; }
-  .comp-line-value.discount { color: #e94560; }
-
-  .comp-divider {
-    height: 1px;
-    background: #bbb;
-    margin: 8px 0;
-  }
-
-  .comp-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0 4px;
-    font-size: 15px;
-    font-weight: 800;
-  }
-  .comp-total-label { color: #1a1a2e; }
-  .comp-total-value-sep { color: #6c757d; }
-  .comp-total-value-bundle { color: #e94560; }
-
-  .comp-savings {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    margin-top: 8px;
-    background: #fff3cd;
-    border: 1px solid #f5c842;
-    border-radius: 6px;
-    padding: 6px 10px;
-    font-size: 12px;
-    font-weight: 700;
-    color: #7d5a00;
-  }
-
-  /* ── SIMILAR BUNDLES ── */
-  .similar-section {
-    margin-bottom: 24px;
-  }
-
-  .similar-grid {
-    display: flex;
-    gap: 14px;
-  }
-
-  .similar-card {
-    flex: 1;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    overflow: hidden;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  }
-
-  .similar-img {
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    position: relative;
-  }
-  .similar-img-bath   { background: linear-gradient(145deg, #e0f0ff, #b8d9f5); }
-  .similar-img-decor  { background: linear-gradient(145deg, #fde8d8, #f8c9a8); }
-  .similar-img-beauty { background: linear-gradient(145deg, #fde8f0, #f8c0d8); }
-
-  .similar-body {
-    padding: 10px 12px;
-  }
-
-  .similar-name {
-    font-size: 12.5px;
-    font-weight: 700;
-    color: #1a1a2e;
-    margin-bottom: 4px;
-    line-height: 1.3;
-  }
-
-  .similar-price {
-    font-size: 14px;
-    font-weight: 800;
-    color: #e94560;
-    margin-bottom: 4px;
-  }
-
-  .similar-stars {
-    font-size: 11px;
-    color: #888;
-    margin-bottom: 8px;
-  }
-  .similar-stars .s { color: #f5c842; }
-
-  .btn-ver-kit {
-    width: 100%;
-    padding: 7px 10px;
-    background: #fff;
-    border: 1.5px solid #e94560;
-    color: #e94560;
-    font-size: 12px;
-    font-weight: 700;
-    border-radius: 6px;
-    cursor: pointer;
-    text-align: center;
-  }
-
-  /* Divider rule */
-  .section-divider {
-    height: 1px;
-    background: #f0f0f0;
-    margin: 0 0 24px 0;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 900px;
+  min-height: 1100px;
+  font-family: Arial, 'Helvetica Neue', 'Malgun Gothic', sans-serif;
+  background: #fff;
+  color: #1a1a1a;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── NAV ── */
+.nav {
+  width: 900px;
+  height: 52px;
+  background: #0d0d0d;
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+  gap: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.5px;
+  flex-shrink: 0;
+  font-family: 'Arial Black', Arial, sans-serif;
+}
+.nav-logo .acc { color: #4dff8c; }
+
+.nav-search {
+  flex: 1;
+  height: 30px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 7px;
+}
+.nav-search-text { font-size: 12px; color: rgba(255,255,255,0.35); }
+
+.nav-cart {
+  flex-shrink: 0;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.cart-badge {
+  background: #e94560;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 10px;
+}
+
+/* ── BF PROMO BANNER STRIP ── */
+.promo-strip {
+  background: linear-gradient(90deg, #0d0d0d 0%, #1a1a1a 50%, #0d0d0d 100%);
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.promo-strip-text {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.promo-strip-text strong { color: #4dff8c; font-weight: 800; }
+.promo-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+
+/* ── BREADCRUMB ── */
+.breadcrumb {
+  padding: 9px 22px;
+  font-size: 11.5px;
+  color: #999;
+  background: #f8f8f8;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.breadcrumb a { color: #555; text-decoration: none; }
+.breadcrumb a:hover { color: #e94560; }
+.breadcrumb .sep { color: #ccc; }
+
+/* ── MAIN ── */
+.main {
+  padding: 22px 22px 0 22px;
+}
+
+/* ── PRODUCT HERO ── */
+.hero {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+/* ── IMAGE COLUMN ── */
+.img-col {
+  width: 360px;
+  flex-shrink: 0;
+}
+
+.main-img-wrap {
+  width: 360px;
+  height: 360px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  position: relative;
+  background: #f0f0f0;
+}
+
+.main-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* BF ribbon */
+.bf-ribbon {
+  position: absolute;
+  top: 20px;
+  right: -28px;
+  background: linear-gradient(90deg, #e94560, #c0392b);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 5px 38px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 10px rgba(233,69,96,0.45);
+  z-index: 5;
+}
+
+/* Badge on image */
+.bundle-badge-img {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(0,0,0,0.75);
+  color: #4dff8c;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 5px 10px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.5px;
+  z-index: 5;
+}
+
+/* Thumbnails */
+.thumb-row {
+  display: flex;
+  gap: 7px;
+  margin-top: 9px;
+}
+
+.thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 7px;
+  overflow: hidden;
+  border: 2px solid #eee;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: #f0f0f0;
+  transition: border-color 0.15s;
+}
+.thumb.active { border-color: #0d0d0d; }
+.thumb:hover { border-color: #999; }
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Thumb placeholders for missing images */
+.thumb-ph {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #e8eef5, #d0dae8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+/* ── DETAILS COLUMN ── */
+.details-col {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Bundle event badge */
+.event-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #0d0d0d;
+  color: #4dff8c;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  margin-bottom: 11px;
+  font-family: 'Arial Black', Arial, sans-serif;
+}
+
+.product-title {
+  font-size: 19px;
+  font-weight: 800;
+  color: #111;
+  line-height: 1.35;
+  margin-bottom: 9px;
+}
+
+/* Seller + rating row */
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.seller-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.seller-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.seller-avatar-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px; background: #dde8f0; }
+
+.seller-info { flex: 1; }
+.seller-name { font-size: 12px; color: #555; }
+.seller-name strong { color: #111; font-weight: 700; }
+
+.stars-row { display: flex; align-items: center; gap: 4px; }
+.star-glyph { color: #f5b800; font-size: 13px; letter-spacing: 0.5px; }
+.star-num { font-size: 12px; color: #555; }
+.star-num a { color: #e94560; text-decoration: none; font-size: 11.5px; margin-left: 3px; }
+
+/* ── PRICING BOX ── */
+.pricing-box {
+  border: 2px solid #111;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 14px;
+  position: relative;
+  background: #fafafa;
+}
+
+.pricing-box-tag {
+  position: absolute;
+  top: -11px;
+  left: 14px;
+  background: #111;
+  color: #4dff8c;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 2px 12px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.price-before-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.price-label { font-size: 11.5px; color: #999; width: 80px; flex-shrink: 0; }
+.price-old { font-size: 14px; color: #bbb; text-decoration: line-through; }
+.ship-old { font-size: 11px; color: #ccc; margin-left: 3px; }
+
+.price-arrow-row { padding-left: 80px; margin: 3px 0; }
+.price-arrow { font-size: 14px; color: #e94560; }
+
+.price-after-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.price-label-new { font-size: 12px; color: #111; font-weight: 700; width: 80px; flex-shrink: 0; }
+.price-new-val {
+  font-size: 30px;
+  font-weight: 900;
+  color: #111;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.ship-free-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: #e8f8ee;
+  color: #1a8a40;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid #b3e5c3;
+  margin-left: 4px;
+}
+
+.savings-row { padding-left: 80px; margin-top: 8px; }
+.savings-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff8e0;
+  border: 1px solid #f5b800;
+  color: #7a5200;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 5px 11px;
+  border-radius: 5px;
+}
+
+/* ── BUNDLE BREAKDOWN ── */
+.breakdown {
+  background: #f7f8fa;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+
+.breakdown-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 9px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bitem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px dashed #e0e2e6;
+}
+.bitem:last-of-type { border-bottom: none; }
+
+.bitem-name { font-size: 12.5px; color: #333; display: flex; align-items: center; gap: 5px; }
+.bitem-check { color: #1a8a40; font-size: 11px; }
+
+.bitem-price { font-size: 12.5px; font-weight: 700; color: #111; text-align: right; }
+.bitem-price .orig { font-size: 11px; color: #bbb; text-decoration: line-through; font-weight: 400; display: block; }
+.disc-tag { background: #e94560; color: #fff; font-size: 9px; font-weight: 800; padding: 1px 5px; border-radius: 3px; margin-left: 4px; }
+
+.btotal-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 2px solid #111;
+}
+.btotal-label { font-size: 13px; font-weight: 800; }
+.btotal-val { font-size: 15px; font-weight: 900; color: #e94560; }
+
+.bship-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+.bship-label { font-size: 11.5px; color: #666; }
+.bship-val { font-size: 12px; font-weight: 700; color: #1a8a40; }
+
+/* ── CTA ── */
+.cta-wrap { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  background: #111;
+  color: #4dff8c;
+  font-size: 15px;
+  font-weight: 900;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Arial Black', Arial, sans-serif;
+}
+.btn-primary:hover { background: #222; }
+
+.btn-secondary {
+  width: 100%;
+  padding: 10px;
+  background: #fff;
+  color: #555;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* ── TRUST ── */
+.trust-row {
+  display: flex;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.trust-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 4px;
+  background: #fafafa;
+  border-right: 1px solid #e5e7eb;
+  font-size: 10px;
+  color: #666;
+  text-align: center;
+  gap: 3px;
+}
+.trust-item:last-child { border-right: none; }
+.trust-icon { font-size: 16px; }
+.trust-label { font-weight: 700; font-size: 10px; color: #333; }
+
+/* ── COMPARISON ── */
+.section {
+  margin-bottom: 28px;
+}
+
+.section-head {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.comp-grid { display: flex; gap: 16px; }
+
+.comp-box {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.comp-head {
+  padding: 11px 16px;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+}
+.comp-head-sep { background: #6c757d; color: #fff; }
+.comp-head-bundle { background: #111; color: #4dff8c; }
+
+.comp-body { padding: 14px 16px; }
+.comp-body-sep { background: #f5f5f5; border: 1px solid #ddd; border-top: none; border-radius: 0 0 10px 10px; }
+.comp-body-bundle { background: #f7fff9; border: 2px solid #111; border-top: none; border-radius: 0 0 10px 10px; }
+
+.comp-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px dashed #ddd;
+  font-size: 12.5px;
+}
+.comp-line:last-of-type { border-bottom: none; }
+.comp-lbl { color: #555; }
+.comp-val { font-weight: 600; color: #111; }
+.comp-val.strike { text-decoration: line-through; color: #bbb; font-weight: 400; }
+.comp-val.green { color: #1a8a40; }
+.comp-val.red { color: #e94560; }
+
+.comp-div { height: 1px; background: #bbb; margin: 8px 0; }
+.comp-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0 4px;
+  font-size: 15px;
+  font-weight: 800;
+}
+.comp-total-sep { color: #6c757d; }
+.comp-total-bundle { color: #111; }
+
+.comp-save {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 8px;
+  background: #fff8e0;
+  border: 1px solid #f5b800;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #7a5200;
+}
+
+/* ── SIMILAR BUNDLES ── */
+.similar-grid { display: flex; gap: 14px; }
+
+.sim-card {
+  flex: 1;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.sim-img {
+  height: 120px;
+  overflow: hidden;
+  background: #e8eef5;
+}
+.sim-img img { width: 100%; height: 100%; object-fit: cover; }
+.sim-img-ph {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+}
+
+.sim-body { padding: 10px 12px; }
+.sim-name { font-size: 12.5px; font-weight: 700; color: #111; margin-bottom: 4px; line-height: 1.3; }
+.sim-price { font-size: 14px; font-weight: 800; color: #e94560; margin-bottom: 4px; }
+.sim-stars { font-size: 11px; color: #888; margin-bottom: 8px; }
+.sim-stars .s { color: #f5b800; }
+
+.btn-sim {
+  width: 100%;
+  padding: 7px;
+  background: #fff;
+  border: 1.5px solid #111;
+  color: #111;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.sec-div { height: 1px; background: #f0f0f0; margin: 0 0 24px 0; }
 </style>
 </head>
 <body>
 
-  <!-- NAV BAR -->
-  <nav class="nav">
-    <div class="nav-logo">o<span>l</span>ist</div>
-    <div class="nav-search">
-      <span class="nav-search-icon">🔍</span>
-      <span class="nav-search-text">상품 검색...</span>
-    </div>
-    <div class="nav-cart">🛒 장바구니 <span style="background:#e94560;color:white;font-size:10px;font-weight:800;padding:1px 5px;border-radius:10px;margin-left:2px;">2</span></div>
-  </nav>
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">o<span class="acc">l</span>ist</div>
+  <div class="nav-search">
+    <span style="font-size:12px;color:rgba(255,255,255,0.3);">🔍</span>
+    <span class="nav-search-text">침구 세트, 베개, 홈 리빙...</span>
+  </div>
+  <div class="nav-cart">🛒 장바구니 <span class="cart-badge">2</span></div>
+</nav>
 
-  <!-- BREADCRUMB -->
-  <div class="breadcrumb">
-    <a href="#">홈</a>
-    <span>›</span>
-    <a href="#">침대·욕실</a>
-    <span>›</span>
-    침실 완성 세트
+<!-- BF PROMO STRIP -->
+<div class="promo-strip">
+  <div class="promo-strip-text">🔥 <strong>블랙프라이데이 번들 기획전</strong></div>
+  <div class="promo-dot"></div>
+  <div class="promo-strip-text">2개 구매 시 <strong>15% 할인</strong> + <strong>무료 배송</strong></div>
+  <div class="promo-dot"></div>
+  <div class="promo-strip-text">⏰ 11.24 – 11.30 한정</div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="#">홈</a>
+  <span class="sep">›</span>
+  <a href="#">침대·욕실</a>
+  <span class="sep">›</span>
+  <a href="#">침구 세트</a>
+  <span class="sep">›</span>
+  <span style="color:#111;">침실 완성 번들 세트</span>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+
+    <!-- Image column -->
+    <div class="img-col">
+      <div class="main-img-wrap">
+        <div class="bf-ribbon">BF 특가</div>
+        <img
+          src="../발표자료/TF3-재구매/assets/tf3-bundle-bedding-set.png"
+          alt="침실 완성 번들 세트 — 소프트 블루 침구"
+          onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(145deg,#dce8f5,#b8d0ea)'"
+        >
+        <div class="bundle-badge-img">📦 번들 세트</div>
+      </div>
+
+      <!-- Thumbnails -->
+      <div class="thumb-row">
+        <div class="thumb active">
+          <img src="../발표자료/TF2-구매경험/assets/tf2-pdp-thumb-1.png" alt="썸네일 1"
+            onerror="this.outerHTML='<div class=\'thumb-ph\'>🛏</div>'">
+        </div>
+        <div class="thumb">
+          <img src="../발표자료/TF2-구매경험/assets/tf2-pdp-thumb-2.png" alt="썸네일 2"
+            onerror="this.outerHTML='<div class=\'thumb-ph\'>🌙</div>'">
+        </div>
+        <div class="thumb">
+          <img src="../발표자료/TF2-구매경험/assets/tf2-pdp-thumb-3.png" alt="썸네일 3"
+            onerror="this.outerHTML='<div class=\'thumb-ph\'>🪴</div>'">
+        </div>
+        <div class="thumb">
+          <img src="../발표자료/TF2-구매경험/assets/tf2-pdp-thumb-4.png" alt="썸네일 4"
+            onerror="this.outerHTML='<div class=\'thumb-ph\'>☁️</div>'">
+        </div>
+        <div class="thumb">
+          <img src="../발표자료/TF2-구매경험/assets/tf2-pdp-thumb-5.png" alt="썸네일 5"
+            onerror="this.outerHTML='<div class=\'thumb-ph\'>✨</div>'">
+        </div>
+      </div>
+    </div>
+
+    <!-- Details column -->
+    <div class="details-col">
+
+      <div class="event-badge">⚡ 번들 기획전 — 블랙프라이데이</div>
+
+      <h1 class="product-title">침실 완성 번들 세트<br>소프트 퀸 침구 커버 + 베개 커버 2p</h1>
+
+      <!-- Seller + rating -->
+      <div class="meta-row">
+        <div class="seller-avatar">
+          <img src="../발표자료/TF2-구매경험/assets/tf2-pdp-seller-home-sleep-studio.png" alt="판매자"
+            onerror="this.outerHTML='<div class=\'seller-avatar-ph\'>🏠</div>'">
+        </div>
+        <div class="seller-info">
+          <div class="seller-name">판매자: <strong>홈앤컴포트 Sleep Studio</strong></div>
+        </div>
+        <div class="stars-row">
+          <span class="star-glyph">★★★★★</span>
+          <span class="star-num">4.8 <a href="#">리뷰 234개</a></span>
+        </div>
+      </div>
+
+      <!-- Pricing box -->
+      <div class="pricing-box">
+        <div class="pricing-box-tag">번들 특가</div>
+        <div class="price-before-row">
+          <span class="price-label">개별 구매</span>
+          <span class="price-old">₩51,944</span>
+          <span class="ship-old">+ 배송비 ₩6,880</span>
+        </div>
+        <div class="price-arrow-row">
+          <span class="price-arrow">▼</span>
+        </div>
+        <div class="price-after-row">
+          <span class="price-label-new">번들 구매</span>
+          <span class="price-new-val">₩48,229</span>
+          <span class="ship-free-badge">🚚 무료 배송</span>
+        </div>
+        <div class="savings-row">
+          <div class="savings-chip">💰 ₩10,595 절약 <span style="font-size:10px;font-weight:600;margin-left:4px;">(18%)</span></div>
+        </div>
+      </div>
+
+      <!-- Bundle breakdown -->
+      <div class="breakdown">
+        <div class="breakdown-title">📦 번들 구성</div>
+
+        <div class="bitem">
+          <div class="bitem-name">
+            <span class="bitem-check">✅</span>
+            소프트 퀸 침구 커버 세트
+          </div>
+          <div class="bitem-price">₩27,180</div>
+        </div>
+
+        <div class="bitem">
+          <div class="bitem-name">
+            <span class="bitem-check">✅</span>
+            베개 커버 2p
+          </div>
+          <div class="bitem-price">
+            <span class="orig">₩24,764</span>
+            ₩21,049 <span class="disc-tag">-15%</span>
+          </div>
+        </div>
+
+        <div class="btotal-row">
+          <span class="btotal-label">번들 합계</span>
+          <span class="btotal-val">₩48,229</span>
+        </div>
+        <div class="bship-row">
+          <span class="bship-label">배송비</span>
+          <span class="bship-val">🚚 무료</span>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-wrap">
+        <button class="btn-primary">🛒 번들 세트 장바구니 담기</button>
+        <button class="btn-secondary">개별 상품으로 구매</button>
+      </div>
+
+      <!-- Trust -->
+      <div class="trust-row">
+        <div class="trust-item"><span class="trust-icon">🔒</span><span class="trust-label">안전 결제</span></div>
+        <div class="trust-item"><span class="trust-icon">🚚</span><span class="trust-label">무료 배송</span></div>
+        <div class="trust-item"><span class="trust-icon">↩️</span><span class="trust-label">30일 환불</span></div>
+        <div class="trust-item"><span class="trust-icon">⭐</span><span class="trust-label">판매자 4.8</span></div>
+      </div>
+
+    </div><!-- /details-col -->
+  </div><!-- /hero -->
+
+  <div class="sec-div"></div>
+
+  <!-- COMPARISON -->
+  <div class="section">
+    <div class="section-head">📊 번들로 사면 얼마나 아낄까?</div>
+    <div class="comp-grid">
+
+      <div class="comp-box">
+        <div class="comp-head comp-head-sep">개별 구매</div>
+        <div class="comp-body comp-body-sep">
+          <div class="comp-line"><span class="comp-lbl">상품 1</span><span class="comp-val">₩27,180</span></div>
+          <div class="comp-line"><span class="comp-lbl">상품 2</span><span class="comp-val">₩24,764</span></div>
+          <div class="comp-line"><span class="comp-lbl">배송비</span><span class="comp-val">₩6,880</span></div>
+          <div class="comp-div"></div>
+          <div class="comp-total">
+            <span>합계</span>
+            <span class="comp-total-sep">₩58,824</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-box">
+        <div class="comp-head comp-head-bundle">번들 구매 ✅</div>
+        <div class="comp-body comp-body-bundle">
+          <div class="comp-line"><span class="comp-lbl">상품 1</span><span class="comp-val">₩27,180</span></div>
+          <div class="comp-line">
+            <span class="comp-lbl">상품 2 <span style="font-size:9px;background:#111;color:#4dff8c;padding:1px 5px;border-radius:3px;font-weight:800;margin-left:3px;">세트 할인</span></span>
+            <span class="comp-val red">₩21,049</span>
+          </div>
+          <div class="comp-line"><span class="comp-lbl">배송비</span><span class="comp-val green">무료 🚚</span></div>
+          <div class="comp-div"></div>
+          <div class="comp-total">
+            <span>합계</span>
+            <span class="comp-total-bundle">₩48,229</span>
+          </div>
+          <div class="comp-save">💰 절약: ₩10,595 (18%)</div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="main-content">
+  <div class="sec-div"></div>
 
-    <!-- PRODUCT HERO -->
-    <div class="product-hero">
+  <!-- SIMILAR -->
+  <div class="section">
+    <div class="section-head">🛍 다른 번들 상품</div>
+    <div class="similar-grid">
 
-      <!-- LEFT: Image -->
-      <div class="product-image-col">
-        <div class="product-image-placeholder">
-          <div class="bf-ribbon">BF 특가</div>
-          <div class="product-image-emoji">🛏</div>
-          <div class="product-image-label">침실 완성 세트</div>
+      <div class="sim-card">
+        <div class="sim-img">
+          <img src="../발표자료/TF2-구매경험/assets/tf2-pdp-before-fullpage.png" alt="욕실 완성 세트"
+            onerror="this.parentNode.innerHTML='<div class=\'sim-img-ph\'>🛁</div>'">
         </div>
-        <div class="image-thumb-row">
-          <div class="thumb active">🛏</div>
-          <div class="thumb">🛁</div>
-          <div class="thumb">📦</div>
-          <div class="thumb">🌟</div>
+        <div class="sim-body">
+          <div class="sim-name">욕실 완성 세트</div>
+          <div class="sim-price">₩43,790</div>
+          <div class="sim-stars"><span class="s">★★★★</span>★ 4.7</div>
+          <div class="btn-sim">세트 보기 →</div>
         </div>
       </div>
 
-      <!-- RIGHT: Details -->
-      <div class="product-details-col">
-
-        <div class="bf-kit-badge">🔥 번들 기획전 — 블랙프라이데이</div>
-
-        <h1 class="product-title">침실 완성 세트 — 침대 커버 + 베개 커버</h1>
-
-        <div class="seller-row">
-          <span class="seller-name">판매자: <strong>홈앤컴포트</strong></span>
-          <span style="font-size:11px;color:#f5c842;">⭐</span>
-          <span style="font-size:12px;color:#555;">4.8 <span style="color:#aaa;">(234 리뷰)</span></span>
+      <div class="sim-card">
+        <div class="sim-img">
+          <img src="../발표자료/TF2-구매경험/assets/tf2-pdp-hero-soft-curve.png" alt="베개 홈케어 세트"
+            onerror="this.parentNode.innerHTML='<div class=\'sim-img-ph\'>🏠</div>'">
         </div>
-
-        <div class="stars">
-          <span class="star-icons">★★★★★</span>
-          <span class="star-count">4.8 — <a href="#" style="color:#e94560;text-decoration:none;font-size:12px;">리뷰 보기</a></span>
+        <div class="sim-body">
+          <div class="sim-name">베개 홈케어 세트</div>
+          <div class="sim-price">₩57,078</div>
+          <div class="sim-stars"><span class="s">★★★★★</span> 4.9</div>
+          <div class="btn-sim">세트 보기 →</div>
         </div>
-
-        <!-- Pricing Box -->
-        <div class="pricing-box">
-          <div class="price-row">
-            <span class="price-label">개별 구매:</span>
-            <span class="price-value-old">₩51,944</span>
-            <span class="price-frete-old">+ 배송비 ₩6,880</span>
-          </div>
-          <div class="price-arrow">▼</div>
-          <div class="price-row" style="align-items:baseline;">
-            <span class="price-label-new" style="font-size:12px;color:#1a1a2e;font-weight:700;width:130px;flex-shrink:0;">번들 구매:</span>
-            <span class="price-value-new">₩48,229</span>
-            <div class="frete-gratis-badge" style="margin-left:8px;">🚚 무료 배송</div>
-          </div>
-          <div style="padding-left:130px;">
-            <div class="savings-badge">💰 ₩10,595 절약 <span style="font-size:10px;font-weight:600;">(18%)</span></div>
-          </div>
-        </div>
-
-        <!-- Bundle breakdown -->
-        <div class="bundle-breakdown">
-          <div class="bundle-breakdown-title">📦 번들 구성:</div>
-
-          <div class="bundle-item-row">
-            <div class="bundle-item-name">
-              <span class="check">✅</span> 퀸 침대 커버 세트
-            </div>
-            <div class="bundle-item-price">₩27,180</div>
-          </div>
-
-          <div class="bundle-item-row">
-            <div class="bundle-item-name">
-              <span class="check">✅</span> 베개 커버 2개 세트
-            </div>
-            <div class="bundle-item-price">
-              <span class="original">₩24,764</span>
-              ₩21,049
-              <span class="discount-tag">-15%</span>
-            </div>
-          </div>
-
-          <div class="bundle-total-row">
-            <span class="bundle-total-label">번들 합계:</span>
-            <span class="bundle-total-value">₩48,229</span>
-          </div>
-          <div class="bundle-frete-row">
-            <span class="bundle-frete-label">+ 배송비:</span>
-            <span class="bundle-frete-value">🚚 무료</span>
-          </div>
-        </div>
-
-        <!-- CTA buttons -->
-        <div class="cta-section">
-          <button class="btn-primary">🛒 장바구니 담기 — 번들 세트</button>
-          <button class="btn-secondary">개별 구매</button>
-        </div>
-
-        <!-- Trust badges -->
-        <div class="trust-row">
-          <div class="trust-item">
-            <span class="trust-icon">🔒</span>
-            <span class="trust-label">안전 결제</span>
-          </div>
-          <div class="trust-item">
-            <span class="trust-icon">🚚</span>
-            <span class="trust-label">무료 배송</span>
-          </div>
-          <div class="trust-item">
-            <span class="trust-icon">↩️</span>
-            <span class="trust-label">30일 환불</span>
-          </div>
-          <div class="trust-item">
-            <span class="trust-icon">⭐</span>
-            <span class="trust-label">판매자 4.8</span>
-          </div>
-        </div>
-
-      </div><!-- /product-details-col -->
-    </div><!-- /product-hero -->
-
-    <div class="section-divider"></div>
-
-    <!-- COMPARISON SECTION -->
-    <div class="comparison-section">
-      <div class="section-title">
-        📊 번들로 사면 얼마나 아낄까?
       </div>
-      <div class="comparison-grid">
 
-        <!-- Separate -->
-        <div class="comparison-box">
-          <div class="comp-header comp-header-separate">개별 구매</div>
-          <div class="comp-body comp-body-separate">
-            <div class="comp-line">
-              <span class="comp-line-label">상품 1</span>
-              <span class="comp-line-value">₩27,180</span>
-            </div>
-            <div class="comp-line">
-              <span class="comp-line-label">상품 2</span>
-              <span class="comp-line-value">₩24,764</span>
-            </div>
-            <div class="comp-line">
-              <span class="comp-line-label">배송비</span>
-              <span class="comp-line-value">₩6,880</span>
-            </div>
-            <div class="comp-divider"></div>
-            <div class="comp-total">
-              <span class="comp-total-label">합계:</span>
-              <span class="comp-total-value-sep">₩58,824</span>
-            </div>
-          </div>
+      <div class="sim-card">
+        <div class="sim-img">
+          <div class="sim-img-ph" style="background:linear-gradient(145deg,#fde8d8,#f8c9a8);">💄</div>
         </div>
-
-        <!-- Bundle -->
-        <div class="comparison-box">
-          <div class="comp-header comp-header-bundle">번들 구매 ✅</div>
-          <div class="comp-body comp-body-bundle">
-            <div class="comp-line">
-              <span class="comp-line-label">상품 1</span>
-              <span class="comp-line-value">₩27,180</span>
-            </div>
-            <div class="comp-line">
-              <span class="comp-line-label">상품 2 <span style="font-size:10px;background:#e94560;color:white;padding:1px 5px;border-radius:3px;font-weight:700;">세트 할인</span></span>
-              <span class="comp-line-value discount">₩21,049</span>
-            </div>
-            <div class="comp-line">
-              <span class="comp-line-label">배송비</span>
-              <span class="comp-line-value green">무료 🚚</span>
-            </div>
-            <div class="comp-divider"></div>
-            <div class="comp-total">
-              <span class="comp-total-label">합계:</span>
-              <span class="comp-total-value-bundle">₩48,229</span>
-            </div>
-            <div class="comp-savings">💰 절약: ₩10,595 (18%)</div>
-          </div>
+        <div class="sim-body">
+          <div class="sim-name">뷰티 루틴 세트</div>
+          <div class="sim-price">₩50,434</div>
+          <div class="sim-stars"><span class="s">★★★★</span>★ 4.8</div>
+          <div class="btn-sim">세트 보기 →</div>
         </div>
-
-      </div><!-- /comparison-grid -->
-    </div><!-- /comparison-section -->
-
-    <div class="section-divider"></div>
-
-    <!-- SIMILAR BUNDLES -->
-    <div class="similar-section">
-      <div class="section-title">
-        🛍 다른 번들 상품:
       </div>
-      <div class="similar-grid">
 
-        <div class="similar-card">
-          <div class="similar-img similar-img-bath">🛁</div>
-          <div class="similar-body">
-            <div class="similar-name">욕실 완성 세트</div>
-            <div class="similar-price">₩43,790</div>
-            <div class="similar-stars"><span class="s">★★★★</span>★ 4.7</div>
-            <div class="btn-ver-kit">세트 보기 →</div>
-          </div>
-        </div>
+    </div>
+  </div>
 
-        <div class="similar-card">
-          <div class="similar-img similar-img-decor">🏠</div>
-          <div class="similar-body">
-            <div class="similar-name">거실 인테리어 세트</div>
-            <div class="similar-price">₩57,078</div>
-            <div class="similar-stars"><span class="s">★★★★★</span> 4.9</div>
-            <div class="btn-ver-kit">세트 보기 →</div>
-          </div>
-        </div>
-
-        <div class="similar-card">
-          <div class="similar-img similar-img-beauty">💄</div>
-          <div class="similar-body">
-            <div class="similar-name">뷰티 루틴 세트</div>
-            <div class="similar-price">₩50,434</div>
-            <div class="similar-stars"><span class="s">★★★★</span>★ 4.8</div>
-            <div class="btn-ver-kit">세트 보기 →</div>
-          </div>
-        </div>
-
-      </div><!-- /similar-grid -->
-    </div><!-- /similar-section -->
-
-  </div><!-- /main-content -->
-
+</div><!-- /main -->
 </body>
 </html>
